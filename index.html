@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Singular Places · A Proposal · MBA Impact Project</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400..700,0..100,0..1;1,9..144,400..700,0..100,0..1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+/* One-pager specific styles */
+.op-hero {
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #2A3727 0%, #4A5D3A 70%, #6B7F5A 100%);
+  position: relative;
+  overflow: hidden;
+  color: var(--paper-light);
+}
+.op-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.22;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.5' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.op-hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  padding: var(--space-12) var(--space-3);
+}
+.op-hero-eyebrow {
+  font-size: 0.78rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--amber-light);
+  margin-bottom: var(--space-4);
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.op-hero-eyebrow::before {
+  content: "";
+  width: 32px;
+  height: 1px;
+  background: var(--amber-light);
+}
+.op-hero h1 {
+  color: var(--paper-light);
+  font-size: clamp(3rem, 7vw, 6.5rem);
+  letter-spacing: -0.035em;
+  line-height: 0.98;
+  margin-bottom: var(--space-4);
+}
+.op-hero h1 em {
+  font-style: italic;
+  color: var(--amber-light);
+  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+}
+.op-hero-sub {
+  font-size: 1.3rem;
+  line-height: 1.6;
+  max-width: 680px;
+  color: rgba(247, 242, 229, 0.92);
+  margin-bottom: var(--space-3);
+}
+.op-hero-tag {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.4rem;
+  color: var(--amber-light);
+  font-variation-settings: "opsz" 48, "SOFT" 80;
+  margin-top: var(--space-6);
+}
+
+/* Section base */
+.op-section {
+  padding: var(--space-12) 0;
+  border-top: 1px solid var(--line);
+}
+.op-section h2 {
+  font-style: italic;
+  margin-bottom: var(--space-4);
+  max-width: 760px;
+}
+
+/* THE PROBLEM */
+.problem-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+@media (max-width: 800px) { .problem-grid { grid-template-columns: 1fr; } }
+.problem-card {
+  background: var(--paper-light);
+  border-left: 2px solid var(--terracotta);
+  padding: var(--space-4);
+  border-radius: var(--radius);
+}
+.problem-card-num {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-style: italic;
+  color: var(--terracotta);
+  line-height: 1;
+  margin-bottom: var(--space-2);
+  font-variation-settings: "opsz" 96;
+}
+.problem-card h3 {
+  font-style: italic;
+  font-size: 1.4rem;
+  margin-bottom: var(--space-2);
+  font-variation-settings: "opsz" 48, "SOFT" 80;
+}
+.problem-card p {
+  color: var(--ink-soft);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* THE PROPOSAL — 3 movements */
+.proposal-block {
+  background: var(--paper-alt);
+}
+.movements {
+  margin-top: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.movement {
+  background: var(--paper-light);
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+  display: grid;
+  grid-template-columns: 120px 1fr 200px;
+  gap: var(--space-4);
+  align-items: center;
+}
+@media (max-width: 800px) {
+  .movement { grid-template-columns: 1fr; gap: var(--space-3); }
+}
+.movement-num {
+  font-family: var(--font-display);
+  font-size: 4.5rem;
+  font-style: italic;
+  color: var(--moss);
+  line-height: 1;
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+}
+.movement-title {
+  font-family: var(--font-display);
+  font-size: 1.65rem;
+  font-style: italic;
+  margin-bottom: var(--space-1);
+  font-variation-settings: "opsz" 48, "SOFT" 80;
+  letter-spacing: -0.015em;
+}
+.movement-desc {
+  color: var(--ink-soft);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+.movement-meta {
+  text-align: right;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: var(--ink-muted);
+  letter-spacing: 0.04em;
+}
+.movement-meta strong {
+  color: var(--moss);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.3rem;
+  display: block;
+  margin-bottom: 4px;
+  font-variation-settings: "opsz" 48;
+}
+.movement-meta-label {
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: var(--terracotta);
+  font-weight: 500;
+}
+@media (max-width: 800px) {
+  .movement-meta { text-align: left; }
+}
+
+/* HOW IT WORKS */
+.howit-grid {
+  margin-top: var(--space-6);
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-3);
+  position: relative;
+}
+.howit-grid::before {
+  content: "";
+  position: absolute;
+  top: 28px;
+  left: 8%;
+  right: 8%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--terracotta) 12%, var(--terracotta) 88%, transparent);
+  opacity: 0.35;
+  z-index: 0;
+}
+@media (max-width: 900px) {
+  .howit-grid { grid-template-columns: 1fr; gap: var(--space-4); }
+  .howit-grid::before { display: none; }
+}
+.howit-step {
+  position: relative;
+  z-index: 1;
+}
+.howit-num {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--paper-alt);
+  border: 1px solid var(--terracotta);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.5rem;
+  color: var(--terracotta);
+  margin-bottom: var(--space-3);
+  font-variation-settings: "opsz" 48, "SOFT" 80;
+}
+.howit-step h3 {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.25rem;
+  font-variation-settings: "opsz" 36, "SOFT" 80;
+  margin-bottom: 8px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+.howit-step p {
+  color: var(--ink-soft);
+  font-size: 0.94rem;
+  line-height: 1.55;
+}
+
+/* HOW IT WORKS section background */
+.howit-section { background: var(--paper); }
+
+/* THE PROOF — 6 experiences */
+.proof-list { margin-top: var(--space-6); }
+.exp-row {
+  display: grid;
+  grid-template-columns: 60px 1fr 1fr 220px;
+  gap: var(--space-3);
+  align-items: baseline;
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--line);
+}
+.exp-row:first-of-type { border-top: 1px solid var(--line); }
+.exp-num {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--terracotta);
+  font-style: italic;
+  font-variation-settings: "opsz" 48;
+}
+.exp-name {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-style: italic;
+  font-variation-settings: "opsz" 48, "SOFT" 80;
+  letter-spacing: -0.01em;
+}
+.exp-name small {
+  display: block;
+  font-family: var(--font-sans);
+  font-style: normal;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 4px;
+  font-variation-settings: normal;
+}
+.exp-desc {
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+.exp-funds {
+  font-size: 0.82rem;
+  color: var(--moss);
+  font-style: italic;
+  text-align: right;
+}
+@media (max-width: 800px) {
+  .exp-row { grid-template-columns: 1fr; gap: var(--space-1); padding: var(--space-3) 0; }
+  .exp-funds { text-align: left; }
+}
+
+/* THE ASK */
+.ask-block {
+  background: var(--ink);
+  color: var(--paper-light);
+  padding: var(--space-12) 0;
+  text-align: center;
+}
+.ask-block h2 {
+  color: var(--paper-light);
+  font-style: italic;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  margin: 0 auto var(--space-4);
+  max-width: 760px;
+}
+.ask-block p {
+  color: rgba(247, 242, 229, 0.85);
+  font-size: 1.2rem;
+  line-height: 1.6;
+  max-width: 640px;
+  margin: 0 auto var(--space-6);
+}
+.ask-pilot {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  max-width: 640px;
+  margin: 0 auto var(--space-6);
+  text-align: left;
+}
+.ask-pilot h4 {
+  color: var(--amber-light);
+  font-style: italic;
+  margin-bottom: var(--space-2);
+}
+.ask-pilot ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: rgba(247,242,229,0.85);
+  font-size: 0.95rem;
+}
+.ask-pilot li::before {
+  content: "—";
+  color: var(--amber-light);
+  margin-right: 10px;
+}
+
+/* Authors footer */
+.authors {
+  padding: var(--space-6) 0;
+  background: var(--paper-alt);
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--ink-muted);
+  letter-spacing: 0.04em;
+}
+.authors strong {
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.05rem;
+  font-variation-settings: "opsz" 36;
+}
+</style>
+</head>
+<body>
+
+<div class="demo-banner">
+  <strong>MBA IMPACT PROJECT</strong> &nbsp;·&nbsp; Team Singular Places · IE Business School · A concept proposal for Lars von der Wettern
+</div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Singular<span>Places</span></a>
+    <ul class="nav-menu">
+      <li><a href="index.html">Proposal</a></li>
+      <li><a href="demo-concierge.html">Concierge</a></li>
+      <li><a href="slovenia.html">Destination</a></li>
+      <li><a href="hotel.html">A Stay</a></li>
+      <li><a href="why-us.html">Manifesto</a></li>
+    </ul>
+    <a href="https://wa.me/" class="nav-cta">Talk to a Singular Expert</a>
+  </div>
+</nav>
+
+<!-- HERO — the thesis -->
+<section class="op-hero">
+  <div class="container">
+    <div class="op-hero-content">
+      <div class="op-hero-eyebrow">A consulting proposal · May 2026</div>
+      <h1>Not an OTA.<br>A regenerative <em>community</em>.</h1>
+      <p class="op-hero-sub">
+        Singular Places is a regenerative travel community for those who choose impact over conspicuous luxury. It runs on editorial curation and human concierge — not on a booking engine.
+      </p>
+      <div class="op-hero-tag">— Our recommendation, in one sentence.</div>
+    </div>
+  </div>
+</section>
+
+<!-- THE PROBLEM -->
+<section class="op-section">
+  <div class="container">
+    <div class="section-eyebrow">The problem we found</div>
+    <h2>Two customers. One brand.</h2>
+    <p style="font-size: 1.15rem; color: var(--ink-soft); max-width: 760px; line-height: 1.7;">
+      Singular Places signals two messages at once. One promises <em>upscale luxury for the intellectually curious traveller</em>. The other promises <em>regenerative impact, with 86% of every booking staying in the community</em>. These describe <strong>two different customers</strong> — and pursuing both at once is what makes the brand feel undefined today.
+    </p>
+
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="problem-card-num">01</div>
+        <h3>The luxury chase is asymmetric.</h3>
+        <p>Mr&amp;Mrs Smith, Tablet/Michelin Keys, and Black Tomato have decades of capital, catalogue and brand. Competing on those terms means winning on a field they own.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-card-num">02</div>
+        <h3>The regenerative field is open.</h3>
+        <p>Almost no direct European competition. Regenerative Travel (US) plays the same space, but their perfectionist threshold caps their supply. SP's <em>imperfect-steps</em> philosophy is the moat — not a limitation.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-card-num">03</div>
+        <h3>The strongest asset is hidden.</h3>
+        <p>The 86% in-destination is SP's most defensible differentiator. Today it sits below the booking buttons. It should lead.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE PROPOSAL — 3 movements -->
+<section class="op-section proposal-block">
+  <div class="container">
+    <div class="section-eyebrow">Our proposal · three movements</div>
+    <h2>Built in sequence, not in parallel. Each pays for the next.</h2>
+
+    <div class="movements">
+
+      <div class="movement">
+        <div class="movement-num">I.</div>
+        <div>
+          <div class="movement-title">Rewrite the narrative.</div>
+          <div class="movement-desc">Same CMS, different conversation. Every hotel becomes a story. Sub-sites per destination. The 86% of every booking that stays in the community becomes the headline message — not the booking buttons. No new platform required.</div>
+        </div>
+        <div class="movement-meta">
+          <strong>0–6 months</strong>
+          <span class="movement-meta-label">Zero capex</span>
+        </div>
+      </div>
+
+      <div class="movement">
+        <div class="movement-num">II.</div>
+        <div>
+          <div class="movement-title">Launch the WhatsApp Concierge.</div>
+          <div class="movement-desc">Six Singular Originals arranged by humans, not by web. You aggregate your travel experts — they keep their tour-operator licence; you keep the brand. Commission rises from 14% to 25–30% on this line.</div>
+        </div>
+        <div class="movement-meta">
+          <strong>6–12 months</strong>
+          <span class="movement-meta-label">One FTE</span>
+        </div>
+      </div>
+
+      <div class="movement">
+        <div class="movement-num">III.</div>
+        <div>
+          <div class="movement-title">Open the community by invitation.</div>
+          <div class="movement-desc">Annual membership €1,500–2,500. B2B alliances with brands of compatible DNA: Patagonia, Aesop, Veja, family offices with ESG criteria. Recurring revenue, pre-qualified customers.</div>
+        </div>
+        <div class="movement-meta">
+          <strong>12–24 months</strong>
+          <span class="movement-meta-label">Recurring revenue</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS — the flow -->
+<section class="op-section howit-section">
+  <div class="container">
+    <div class="section-eyebrow">How it works · From first message to Impact Receipt</div>
+    <h2>Five steps. One human. Zero forms.</h2>
+    <p style="font-size: 1.15rem; color: var(--ink-soft); max-width: 720px; line-height: 1.7;">
+      No search bar. No filters. No "best price guarantee". Just a conversation that ends with a trip — and a transparent receipt showing exactly where your money went.
+    </p>
+
+    <div class="howit-grid">
+      <div class="howit-step">
+        <div class="howit-num">I</div>
+        <h3>You write.</h3>
+        <p>One WhatsApp message: who you are, when, what kind of trip. Ninety seconds.</p>
+      </div>
+      <div class="howit-step">
+        <div class="howit-num">II</div>
+        <h3>A Concierge reads you.</h3>
+        <p>A human (not a bot) reviews your brief and routes it to the local Ambassador of your destination.</p>
+      </div>
+      <div class="howit-step">
+        <div class="howit-num">III</div>
+        <h3>Your Ambassador designs the route.</h3>
+        <p>Hotels + experiences + every Host called personally to confirm. Within 24 hours.</p>
+      </div>
+      <div class="howit-step">
+        <div class="howit-num">IV</div>
+        <h3>You receive one proposal.</h3>
+        <p>Day by day. With the 86% breakdown — exactly where your money goes. Yes or no.</p>
+      </div>
+      <div class="howit-step">
+        <div class="howit-num">V</div>
+        <h3>After the trip, an Impact Receipt.</h3>
+        <p>What your money funded: a season of conservation, an apprentice's salary, a craft kept alive.</p>
+      </div>
+    </div>
+
+    <p style="margin-top: var(--space-6); text-align: center; font-family: var(--font-display); font-style: italic; font-size: 1.4rem; color: var(--moss); font-variation-settings: 'opsz' 48, 'SOFT' 80;">
+      "On Booking, this is impossible. On the hotel website, it is impossible. Here, it is the product."
+    </p>
+  </div>
+</section>
+
+<!-- THE PROOF — 6 regenerative experiences -->
+<section class="op-section" id="originals">
+  <div class="container">
+    <div class="section-eyebrow">Concept · six originals the filter could produce</div>
+    <h2>Six concept experiences.</h2>
+    <p style="font-size: 1.15rem; color: var(--ink-soft); max-width: 760px; line-height: 1.7; margin-bottom: var(--space-3);">
+      These six are <strong>concept proposals</strong>, not current SP inventory. The intent is to show what the model produces when the filter is applied to SP's existing geography and Host network — not to claim what already exists.
+    </p>
+    <p style="font-size: 1.15rem; color: var(--ink-soft); max-width: 760px; line-height: 1.7; margin-bottom: var(--space-2);">
+      Each would follow the same logic: <strong>hosted by someone in SP's network</strong>, paying a craft or community on the edge of disappearing, and <strong>impossible to book anywhere else online</strong>. That is what makes an experience Singular.
+    </p>
+    <p style="font-style: italic; color: var(--moss); font-family: var(--font-display); font-size: 1.1rem; max-width: 760px;">
+      Filter: pays a disappearing craft · keeps cultural heritage · supports a small community.
+    </p>
+
+    <div class="proof-list">
+
+      <div class="exp-row">
+        <div class="exp-num">01</div>
+        <div class="exp-name"><small>Slovenia · Bohinj</small>Wild honey morning</div>
+        <div class="exp-desc">A morning with Anže, 4th-generation keeper of the endangered Carniolan bee.</div>
+        <div class="exp-funds">Funds one season of bee conservation</div>
+      </div>
+
+      <div class="exp-row">
+        <div class="exp-num">02</div>
+        <div class="exp-name"><small>India · Rajasthan</small>Dinner with the Rajputana</div>
+        <div class="exp-desc">Not the palace-hotel — the family's private residence. They have lived in this fort since 1640.</div>
+        <div class="exp-funds">Funds heritage textile workshop</div>
+      </div>
+
+      <div class="exp-row">
+        <div class="exp-num">03</div>
+        <div class="exp-name"><small>Slovenia · Bohinj</small>Dawn fishing, 1920 punt</div>
+        <div class="exp-desc">Marija — the last licensed Bohinj fisherwoman — and her great-grandfather's wooden boat.</div>
+        <div class="exp-funds">Supports artisanal fishing rights</div>
+      </div>
+
+      <div class="exp-row">
+        <div class="exp-num">04</div>
+        <div class="exp-name"><small>Spain · Soria</small>Black truffle hunt &amp; village table</div>
+        <div class="exp-desc">Hunt with Tomás and his trained Pirinea dog, then dinner — entirely truffle — at the village chef's house.</div>
+        <div class="exp-funds">Funds reforestation of mycorrhizal oaks</div>
+      </div>
+
+      <div class="exp-row">
+        <div class="exp-num">05</div>
+        <div class="exp-name"><small>Vietnam · Mekong</small>The Mekong, by sampan</div>
+        <div class="exp-desc">Four days down the river. Each evening, the village grandmothers cook dinner — their recipes, their kitchens.</div>
+        <div class="exp-funds">Income for nine river-village families</div>
+      </div>
+
+      <div class="exp-row">
+        <div class="exp-num">06</div>
+        <div class="exp-name"><small>Kenya · Laikipia</small>Maasai at dawn</div>
+        <div class="exp-desc">The Big Five with Maasai-owned guides on community-owned land. Every guest funds one ranger-day against poaching.</div>
+        <div class="exp-funds">Funds community wildlife conservancy</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Authors -->
+<div class="authors">
+  <div class="container">
+    <p>
+      Prepared by &nbsp;<strong>Team Singular Places</strong>&nbsp; · &nbsp;
+      Bharat Taneja · Carlos Monroy · William Reid · Santiago Lince · Tomás Pérez &nbsp; · &nbsp;
+      IE Business School · MBA Impact Project · May 2026
+    </p>
+  </div>
+</div>
+
+</body>
+</html>

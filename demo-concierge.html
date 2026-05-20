@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>The Concierge — A Real Conversation · Singular Places</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400..700,0..100,0..1;1,9..144,400..700,0..100,0..1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+.demo-page {
+  background: var(--paper-alt);
+  min-height: 100vh;
+  padding: var(--space-6) 0 var(--space-12);
+}
+
+.demo-intro {
+  max-width: 700px;
+  margin: 0 auto var(--space-6);
+  padding: 0 var(--space-3);
+  text-align: center;
+}
+.demo-intro h1 {
+  font-style: italic;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: var(--space-3);
+  letter-spacing: -0.025em;
+}
+.demo-intro h1 em {
+  color: var(--moss);
+  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+}
+.demo-intro p {
+  font-size: 1.15rem;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  max-width: 580px;
+  margin: 0 auto;
+}
+.demo-intro-eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: var(--space-3);
+  font-weight: 600;
+}
+
+/* PHONE FRAME */
+.phone {
+  max-width: 420px;
+  margin: 0 auto;
+  background: #0F1614;
+  border-radius: 40px;
+  padding: 14px;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.18), 0 12px 24px rgba(0,0,0,0.08);
+  position: relative;
+}
+.phone::before {
+  content: "";
+  position: absolute;
+  top: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 88px;
+  height: 24px;
+  background: #0F1614;
+  border-radius: 14px;
+  z-index: 10;
+}
+
+.phone-screen {
+  background: #E5DDD4;
+  border-radius: 28px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* WHATSAPP HEADER */
+.wa-header {
+  background: #075E54;
+  color: #fff;
+  padding: 56px 16px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.wa-back {
+  font-size: 1.3rem;
+  color: rgba(255,255,255,0.85);
+}
+.wa-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--moss-light), var(--moss));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.3rem;
+  color: var(--paper-light);
+  font-variation-settings: "opsz" 36, "SOFT" 80;
+}
+.wa-contact {
+  flex: 1;
+}
+.wa-name {
+  font-weight: 600;
+  font-size: 0.98rem;
+}
+.wa-status {
+  font-size: 0.78rem;
+  opacity: 0.75;
+}
+.wa-icons {
+  color: rgba(255,255,255,0.8);
+  font-size: 1.1rem;
+  display: flex;
+  gap: 18px;
+}
+
+/* CHAT BODY */
+.wa-body {
+  background: #E5DDD4;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='p' width='40' height='40' patternUnits='userSpaceOnUse'%3E%3Ctext x='5' y='15' font-family='sans-serif' font-size='10' fill='%23D4CABE' opacity='0.5'%3E%E2%9C%93%3C/text%3E%3Ctext x='25' y='30' font-family='sans-serif' font-size='8' fill='%23D4CABE' opacity='0.4'%3E%E2%98%80%3C/text%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23p)'/%3E%3C/svg%3E");
+  padding: 16px 12px 80px;
+  min-height: 560px;
+  max-height: 720px;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+/* DATE DIVIDER */
+.wa-day {
+  text-align: center;
+  margin: 14px 0;
+}
+.wa-day span {
+  background: #DAE1E0;
+  color: #54656F;
+  font-size: 0.72rem;
+  padding: 4px 10px;
+  border-radius: 8px;
+  letter-spacing: 0.02em;
+  font-weight: 500;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.08);
+}
+
+/* MESSAGE BUBBLES */
+.wa-msg {
+  max-width: 78%;
+  margin-bottom: 6px;
+  padding: 7px 10px 6px;
+  border-radius: 8px;
+  font-size: 0.92rem;
+  line-height: 1.4;
+  position: relative;
+  opacity: 0;
+  transform: translateY(8px);
+  animation: bubble 0.4s ease-out forwards;
+  word-wrap: break-word;
+  box-shadow: 0 1px 0.5px rgba(0,0,0,0.13);
+}
+@keyframes bubble {
+  to { opacity: 1; transform: translateY(0); }
+}
+.wa-msg.in {
+  background: #fff;
+  margin-right: auto;
+  border-top-left-radius: 0;
+  color: #0F1614;
+}
+.wa-msg.out {
+  background: #DCF8C6;
+  margin-left: auto;
+  border-top-right-radius: 0;
+  color: #0F1614;
+}
+.wa-msg strong { font-weight: 600; }
+.wa-msg em { font-style: italic; color: var(--moss); }
+
+.wa-meta {
+  font-size: 0.65rem;
+  color: rgba(15,22,20,0.45);
+  text-align: right;
+  margin-top: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+}
+.wa-meta-tick { color: #53BDEB; font-size: 0.78rem; line-height: 1; }
+
+/* TYPING INDICATOR */
+.wa-typing {
+  background: #fff;
+  margin-right: auto;
+  max-width: 60px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border-top-left-radius: 0;
+  margin-bottom: 8px;
+  display: flex;
+  gap: 4px;
+  box-shadow: 0 1px 0.5px rgba(0,0,0,0.13);
+  opacity: 0;
+  animation: bubble 0.4s ease-out forwards;
+}
+.wa-typing span {
+  width: 6px;
+  height: 6px;
+  background: #999;
+  border-radius: 50%;
+  animation: typing 1.4s ease-in-out infinite;
+}
+.wa-typing span:nth-child(2) { animation-delay: 0.2s; }
+.wa-typing span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes typing {
+  0%, 60%, 100% { opacity: 0.3; transform: translateY(0); }
+  30% { opacity: 1; transform: translateY(-3px); }
+}
+
+/* PROPOSAL CARD (inside chat) */
+.wa-proposal {
+  background: #fff;
+  border-radius: 10px;
+  padding: 0;
+  margin-right: auto;
+  margin-bottom: 6px;
+  max-width: 86%;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.13);
+  opacity: 0;
+  animation: bubble 0.5s ease-out forwards;
+  border-top-left-radius: 0;
+}
+.wa-proposal-banner {
+  background: linear-gradient(135deg, var(--moss), var(--moss-dark));
+  color: var(--paper-light);
+  padding: 14px 14px 12px;
+  position: relative;
+  overflow: hidden;
+}
+.wa-proposal-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.18;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.5' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.wa-proposal-eyebrow {
+  position: relative;
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--amber-light);
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+.wa-proposal-title {
+  position: relative;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.4rem;
+  line-height: 1.15;
+  font-variation-settings: "opsz" 48, "SOFT" 80;
+}
+.wa-proposal-body { padding: 12px 14px 14px; font-size: 0.85rem; color: #0F1614; }
+.wa-proposal-row {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 8px;
+  padding: 8px 0;
+  border-bottom: 1px solid #EEE6D7;
+  align-items: baseline;
+}
+.wa-proposal-row:last-of-type { border-bottom: none; }
+.wa-proposal-day {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--terracotta);
+  font-variation-settings: "opsz" 36;
+}
+.wa-proposal-act { line-height: 1.4; }
+.wa-proposal-act strong { color: var(--moss-dark); }
+.wa-proposal-act .ornament {
+  font-size: 0.7rem;
+  color: var(--amber);
+  margin-right: 4px;
+  letter-spacing: 0.15em;
+}
+.wa-proposal-cta {
+  background: var(--paper-alt);
+  padding: 10px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 0.85rem;
+}
+.wa-proposal-price {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.3rem;
+  color: var(--moss);
+  font-variation-settings: "opsz" 48, "SOFT" 80;
+}
+
+/* IMPACT RECEIPT (later) */
+.wa-receipt {
+  background: var(--ink);
+  color: var(--paper-light);
+  border-radius: 10px;
+  padding: 14px;
+  margin-right: auto;
+  margin-bottom: 6px;
+  max-width: 86%;
+  border-top-left-radius: 0;
+  opacity: 0;
+  animation: bubble 0.5s ease-out forwards;
+  font-size: 0.82rem;
+}
+.wa-receipt-eyebrow {
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--amber-light);
+  margin-bottom: 6px;
+}
+.wa-receipt-title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.25rem;
+  margin-bottom: 12px;
+  font-variation-settings: "opsz" 48, "SOFT" 80;
+  line-height: 1.2;
+}
+.wa-receipt-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  font-size: 0.8rem;
+}
+.wa-receipt-row strong {
+  color: var(--amber-light);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-variation-settings: "opsz" 36;
+}
+.wa-receipt-total {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1.5px solid var(--amber-light);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  font-variation-settings: "opsz" 48;
+}
+.wa-receipt-total span { color: var(--amber-light); }
+
+/* CONTROL BAR */
+.demo-controls {
+  max-width: 420px;
+  margin: var(--space-4) auto 0;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+.demo-btn {
+  padding: 10px 18px;
+  background: var(--moss);
+  color: var(--paper-light);
+  border: none;
+  border-radius: var(--radius);
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.demo-btn:hover { background: var(--moss-dark); }
+.demo-btn-ghost {
+  background: transparent;
+  border: 1px solid var(--moss);
+  color: var(--moss);
+}
+.demo-btn-ghost:hover { background: var(--paper-light); }
+
+.demo-takeaway {
+  max-width: 700px;
+  margin: var(--space-12) auto 0;
+  padding: 0 var(--space-3);
+  text-align: center;
+}
+.demo-takeaway h2 {
+  font-style: italic;
+  margin-bottom: var(--space-3);
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+.demo-takeaway p {
+  font-size: 1.1rem;
+  color: var(--ink-soft);
+  line-height: 1.7;
+  margin-bottom: var(--space-2);
+}
+.demo-takeaway-quote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.5rem;
+  color: var(--moss);
+  margin-top: var(--space-4);
+  font-variation-settings: "opsz" 96, "SOFT" 100;
+  line-height: 1.35;
+}
+</style>
+</head>
+<body>
+
+<div class="demo-banner">
+  <strong>MBA IMPACT PROJECT</strong> &nbsp;·&nbsp; Team Singular Places · IE Business School · A concept proposal for Lars von der Wettern
+</div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Singular<span>Places</span></a>
+    <ul class="nav-menu">
+      <li><a href="index.html">Proposal</a></li>
+      <li><a href="demo-concierge.html">Concierge</a></li>
+      <li><a href="slovenia.html">Destination</a></li>
+      <li><a href="hotel.html">A Stay</a></li>
+      <li><a href="why-us.html">Manifesto</a></li>
+    </ul>
+    <a href="https://wa.me/" class="nav-cta">Talk to a Singular Expert</a>
+  </div>
+</nav>
+
+<section class="demo-page">
+
+  <div class="demo-intro">
+    <div class="demo-intro-eyebrow">The product, in action</div>
+    <h1>This is what <em>Booking can't do</em>.</h1>
+    <p>A real conversation between a customer and the Singular Places Concierge. From first message to Impact Receipt. Read it as it would arrive — one bubble at a time.</p>
+  </div>
+
+  <!-- PHONE -->
+  <div class="phone">
+    <div class="phone-screen">
+
+      <!-- WhatsApp Header -->
+      <div class="wa-header">
+        <div class="wa-back">‹</div>
+        <div class="wa-avatar">SP</div>
+        <div class="wa-contact">
+          <div class="wa-name">Singular Places</div>
+          <div class="wa-status">online · typically replies in &lt;24h</div>
+        </div>
+        <div class="wa-icons">
+          <span>📞</span>
+          <span>⋮</span>
+        </div>
+      </div>
+
+      <!-- Chat body — messages will be injected by JS -->
+      <div class="wa-body" id="chat"></div>
+
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <div class="demo-controls">
+    <button class="demo-btn" onclick="restart()">↻ Replay conversation</button>
+    <button class="demo-btn demo-btn-ghost" onclick="skipToEnd()">Skip to end</button>
+  </div>
+
+  <!-- The takeaway -->
+  <div class="demo-takeaway">
+    <h2>What just happened.</h2>
+    <p>
+      In one chat, the customer received: a curated route, four experiences that don't exist on any other website, a personalised proposal, a confirmed booking, real-time pre-trip coordination, and a transparent report on where the money went.
+    </p>
+    <p>
+      Total time the customer spent organising the trip: <strong>about six minutes</strong>.
+    </p>
+    <p class="demo-takeaway-quote">
+      "On Booking, this trip is impossible. On the hotel website, it is impossible. On Singular Places, it is the product."
+    </p>
+  </div>
+
+</section>
+
+<script>
+// === The script — chronological conversation ===
+const conversation = [
+  { type: 'day', text: 'Monday · 14 September' },
+
+  { type: 'msg', side: 'out', text: 'Hi. My 5th anniversary is in mid-September. My wife and I, 5 nights. She loves nature and good food, hates chain hotels. Budget around €8,000 for the two of us. Looking for something in Europe — not the usual.', time: '10:14', ticks: true },
+
+  { type: 'typing', delay: 400 },
+  { type: 'msg', side: 'in', text: 'Tomás, hello — welcome. <strong>Poonam here</strong>, from Singular Places. Congratulations on five years. 🌿 Give me one hour to read your brief properly. I think this is Slovenia for you — let me pass it to our Slovenia Ambassador.', time: '14:02' },
+
+  { type: 'typing', delay: 600 },
+  { type: 'msg', side: 'in', text: 'Hi Tomás — I\'m <strong>Tjaša</strong>. Born in Bled, came back from Berlin three years ago. I\'ll design your route this afternoon and send a draft within 24h. May I ask: any dietary restrictions, mobility considerations, or anything else I should know about the surprise?', time: '16:18' },
+
+  { type: 'msg', side: 'out', text: 'María is gluten intolerant. Otherwise no restrictions. The surprise — she doesn\'t know. I want her to feel it was made for her.', time: '16:24', ticks: true },
+
+  { type: 'typing', delay: 700 },
+  { type: 'msg', side: 'in', text: 'Understood. I\'ll let every Host know in advance — the gluten will be handled invisibly, and the anniversary will not be obvious until the right moments. Working on the route now.', time: '16:31' },
+
+  { type: 'day', text: 'Tuesday · 15 September' },
+
+  { type: 'msg', side: 'in', text: 'Good morning. Your route is ready. I am sending it as a card you can scroll through. Tell me what doesn\'t feel right.', time: '11:08' },
+
+  { type: 'proposal' },
+
+  { type: 'msg', side: 'in', text: 'A few notes: 86% of what you pay stays in this region. The 1996 vertical at Hiša Linhart — the winemaker only opens it for guests who care. The Postojna dinner only happens four times a year — there are two seats left for September 19.', time: '11:10' },
+
+  { type: 'msg', side: 'out', text: 'Tjaša, this is exactly what I was hoping for. Let\'s do it. How do we proceed?', time: '14:42', ticks: true },
+
+  { type: 'msg', side: 'in', text: 'Wonderful. I\'ll send a payment link for 50% now (€3,750), the rest a week before. After payment, I will personally call each Host and your travel will be set. I\'ll be here on this same chat throughout the trip if anything comes up.', time: '14:49' },
+
+  { type: 'day', text: 'Tuesday · 22 September · trip starts tomorrow' },
+
+  { type: 'msg', side: 'in', text: 'Hi Tomás — quick update. Carla confirmed the gluten-free tasting menu for the first night. Anže is preparing a small jar with both your names on the label. The sommelier at Postojna has placed your name plate on table 4.', time: '17:02' },
+  { type: 'msg', side: 'in', text: 'Safe travels. Watch the sunrise over the lake on Wednesday morning — it is the best of the year.', time: '17:03' },
+
+  { type: 'msg', side: 'out', text: 'Tjaša you\'re unbelievable. Thank you.', time: '18:11', ticks: true },
+
+  { type: 'day', text: 'Sunday · 27 September · the trip is over' },
+
+  { type: 'msg', side: 'in', text: 'Welcome back. María sent us a note last night thanking the team — I\'ll let the Hosts know. Your Annual Impact Receipt is below. This is what your trip funded.', time: '10:24' },
+
+  { type: 'receipt' },
+
+  { type: 'msg', side: 'in', text: 'Same Tjaša, same chat, whenever you want to plan the next one. ❤️', time: '10:26' },
+];
+
+// === Render engine ===
+const chat = document.getElementById('chat');
+
+function bubble(msg) {
+  const div = document.createElement('div');
+  div.className = `wa-msg ${msg.side}`;
+  let html = msg.text;
+  if (msg.time) {
+    const ticks = msg.ticks ? '<span class="wa-meta-tick">✓✓</span>' : '';
+    html += `<span class="wa-meta">${msg.time} ${ticks}</span>`;
+  }
+  div.innerHTML = html;
+  return div;
+}
+
+function dayDivider(text) {
+  const div = document.createElement('div');
+  div.className = 'wa-day';
+  div.innerHTML = `<span>${text}</span>`;
+  return div;
+}
+
+function typingEl() {
+  const d = document.createElement('div');
+  d.className = 'wa-typing';
+  d.innerHTML = '<span></span><span></span><span></span>';
+  return d;
+}
+
+function proposalEl() {
+  const d = document.createElement('div');
+  d.className = 'wa-proposal';
+  d.innerHTML = `
+    <div class="wa-proposal-banner">
+      <div class="wa-proposal-eyebrow">For Tomás & María · 5 nights · Slovenia</div>
+      <div class="wa-proposal-title">Five quiet days in the country with the most bees per square kilometre.</div>
+    </div>
+    <div class="wa-proposal-body">
+      <div class="wa-proposal-row">
+        <div class="wa-proposal-day">I</div>
+        <div class="wa-proposal-act"><strong>Vila Planinka</strong>, Bohinj. Arrive, settle, dinner with Carla.</div>
+      </div>
+      <div class="wa-proposal-row">
+        <div class="wa-proposal-day">II</div>
+        <div class="wa-proposal-act"><span class="ornament">★</span><strong>Wild honey morning</strong> with Anže, 4th-gen Carniolan beekeeper.</div>
+      </div>
+      <div class="wa-proposal-row">
+        <div class="wa-proposal-day">III</div>
+        <div class="wa-proposal-act"><span class="ornament">★</span><strong>Dawn fishing</strong> with Marija, 1920 punt. Transfer to Brda.</div>
+      </div>
+      <div class="wa-proposal-row">
+        <div class="wa-proposal-day">IV</div>
+        <div class="wa-proposal-act"><strong>Hiša Linhart</strong>, 17th-c manor. <span class="ornament">★</span> Vertical tasting 1996–2024.</div>
+      </div>
+      <div class="wa-proposal-row">
+        <div class="wa-proposal-day">V</div>
+        <div class="wa-proposal-act"><span class="ornament">★</span><strong>Subterranean dinner</strong> in Postojna Cave. 12 guests, once a season.</div>
+      </div>
+    </div>
+    <div class="wa-proposal-cta">
+      <span>5 nights, all-in</span>
+      <span class="wa-proposal-price">€7,500</span>
+    </div>
+  `;
+  return d;
+}
+
+function receiptEl() {
+  const d = document.createElement('div');
+  d.className = 'wa-receipt';
+  d.innerHTML = `
+    <div class="wa-receipt-eyebrow">Annual Impact Receipt · September 2026</div>
+    <div class="wa-receipt-title">Where your €7,500 actually went.</div>
+    <div class="wa-receipt-row"><span>Vila Planinka & Hiša Linhart</span><strong>€3,200</strong></div>
+    <div class="wa-receipt-row"><span>Anže, Marija, sommelier & artisans</span><strong>€2,260</strong></div>
+    <div class="wa-receipt-row"><span>Save Bohinj Wetlands (NGO)</span><strong>€210</strong></div>
+    <div class="wa-receipt-row"><span>Tjaša, your Slovenia Ambassador</span><strong>€210</strong></div>
+    <div class="wa-receipt-row"><span>Singular Places team</span><strong>€630</strong></div>
+    <div class="wa-receipt-row"><span>Logistics & transfers</span><strong>€990</strong></div>
+    <div class="wa-receipt-total"><span>Stayed in Slovenia</span><span>€5,880 · 86%</span></div>
+  `;
+  return d;
+}
+
+let timeouts = [];
+function cancelTimers() { timeouts.forEach(t => clearTimeout(t)); timeouts = []; }
+
+function scrollChat() {
+  chat.scrollTop = chat.scrollHeight;
+}
+
+function play() {
+  chat.innerHTML = '';
+  cancelTimers();
+  let acc = 0;
+  conversation.forEach((item, i) => {
+    const isFirst = i === 0;
+    const baseDelay = isFirst ? 200 : 700;
+    const itemDelay = (item.delay || baseDelay);
+    acc += itemDelay;
+    timeouts.push(setTimeout(() => {
+      if (item.type === 'msg') chat.appendChild(bubble(item));
+      else if (item.type === 'day') chat.appendChild(dayDivider(item.text));
+      else if (item.type === 'typing') {
+        const t = typingEl();
+        chat.appendChild(t);
+        timeouts.push(setTimeout(() => t.remove(), 900));
+      }
+      else if (item.type === 'proposal') chat.appendChild(proposalEl());
+      else if (item.type === 'receipt') chat.appendChild(receiptEl());
+      scrollChat();
+    }, acc));
+  });
+}
+
+function restart() { play(); }
+function skipToEnd() {
+  cancelTimers();
+  chat.innerHTML = '';
+  conversation.forEach(item => {
+    if (item.type === 'typing') return;
+    if (item.type === 'msg') chat.appendChild(bubble(item));
+    else if (item.type === 'day') chat.appendChild(dayDivider(item.text));
+    else if (item.type === 'proposal') chat.appendChild(proposalEl());
+    else if (item.type === 'receipt') chat.appendChild(receiptEl());
+  });
+  // remove animations for instant render
+  chat.querySelectorAll('.wa-msg, .wa-proposal, .wa-receipt').forEach(el => {
+    el.style.animation = 'none';
+    el.style.opacity = '1';
+    el.style.transform = 'none';
+  });
+  scrollChat();
+}
+
+// Auto-play on load
+play();
+</script>
+
+</body>
+</html>
