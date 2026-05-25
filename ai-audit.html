@@ -100,7 +100,7 @@
 }
 .scorecard-row {
   display: grid;
-  grid-template-columns: 2.5fr repeat(4, 1fr);
+  grid-template-columns: 2.2fr repeat(5, 1fr);
   border-bottom: 1px solid var(--line);
 }
 .scorecard-row:last-child { border-bottom: none; }
@@ -163,8 +163,8 @@
   font-size: 0.95rem;
 }
 @media (max-width: 800px) {
-  .scorecard-row { grid-template-columns: 2fr repeat(4, 1fr); font-size: 0.8rem; }
-  .scorecard-row > div { padding: var(--space-2) 4px; }
+  .scorecard-row { grid-template-columns: 1.8fr repeat(5, 1fr); font-size: 0.72rem; }
+  .scorecard-row > div { padding: var(--space-2) 3px; }
 }
 
 .scorecard-legend {
@@ -683,12 +683,12 @@
 <section class="audit-hero">
   <div class="container">
     <div class="audit-hero-content">
-      <div class="audit-hero-eyebrow">Live audit · May 2026 · Four AIs tested</div>
-      <h1>We asked four AIs where to book <em>regenerative luxury</em>.</h1>
+      <div class="audit-hero-eyebrow">Live audit · May 2026 · Five AIs tested</div>
+      <h1>We asked five AIs where to book <em>regenerative luxury</em>.</h1>
       <p class="audit-hero-sub">
-        ChatGPT. Perplexity. Gemini. Claude. The results were not what we expected — and the most important finding wasn't who recommended Singular Places. It was who didn't, and why.
+        ChatGPT. Perplexity. Gemini. Claude. Copilot. The results were not what we expected — and the most important finding wasn't who recommended Singular Places. It was who didn't, and why.
       </p>
-      <p class="audit-hero-meta">7 prompts · 4 AI engines · 22 May 2026 · Real conversations</p>
+      <p class="audit-hero-meta">7 prompts · 5 AI engines · May 2026 · Real conversations, validated for bias</p>
     </div>
   </div>
 </section>
@@ -709,10 +709,12 @@
         <div>Perplexity</div>
         <div>Gemini</div>
         <div>Claude</div>
+        <div>Copilot</div>
       </div>
 
       <div class="scorecard-row">
         <div class="prompt-cell">Generic discovery<br><small style="color:var(--ink-muted); font-weight: 400;">"Best regenerative travel platforms in Europe"</small></div>
+        <div class="score-cell fail">— not listed</div>
         <div class="score-cell fail">— not listed</div>
         <div class="score-cell fail">— not listed</div>
         <div class="score-cell fail">— not listed</div>
@@ -725,11 +727,13 @@
         <div class="score-cell fail">— not listed</div>
         <div class="score-cell warn">#5</div>
         <div class="score-cell fail">— not listed</div>
+        <div class="score-cell fail">— not listed</div>
       </div>
 
       <div class="scorecard-row">
         <div class="prompt-cell">Money stays in local community<br><small style="color:var(--ink-muted); font-weight: 400;">"7-day trip, measurable impact"</small></div>
         <div class="score-cell">—</div>
+        <div class="score-cell fail">— not listed</div>
         <div class="score-cell fail">— not listed</div>
         <div class="score-cell fail">— not listed</div>
         <div class="score-cell fail">— not listed</div>
@@ -741,12 +745,14 @@
         <div class="score-cell">—</div>
         <div class="score-cell fail">— not listed</div>
         <div class="score-cell fail">— not listed</div>
+        <div class="score-cell fail">— not listed</div>
       </div>
 
       <div class="scorecard-row">
         <div class="prompt-cell">B Corp certified platforms<br><small style="color:var(--ink-muted); font-weight: 400;">"Independent, regenerative hospitality"</small></div>
         <div class="score-cell">—</div>
         <div class="score-cell warn">subcategory</div>
+        <div class="score-cell fail">— not listed</div>
         <div class="score-cell fail">— not listed</div>
         <div class="score-cell fail">— not listed</div>
       </div>
@@ -757,6 +763,7 @@
         <div class="score-cell win">recognised</div>
         <div class="score-cell win">recognised</div>
         <div class="score-cell win">deep analysis</div>
+        <div class="score-cell win">very favourable</div>
       </div>
 
       <div class="scorecard-row">
@@ -765,6 +772,7 @@
         <div class="score-cell win">#1</div>
         <div class="score-cell warn">#4</div>
         <div class="score-cell fail">— not listed</div>
+        <div class="score-cell win">#1</div>
       </div>
     </div>
 
@@ -1125,19 +1133,19 @@
     <div class="methodology-grid">
       <div class="methodology-item">
         <div class="methodology-item-label">Date conducted</div>
-        <div class="methodology-item-value">22 May 2026</div>
+        <div class="methodology-item-value">22-25 May 2026</div>
       </div>
       <div class="methodology-item">
         <div class="methodology-item-label">AI engines tested</div>
-        <div class="methodology-item-value">ChatGPT, Perplexity, Gemini, Claude</div>
+        <div class="methodology-item-value">ChatGPT, Perplexity, Gemini, Claude, Copilot</div>
       </div>
       <div class="methodology-item">
         <div class="methodology-item-label">Prompts used</div>
         <div class="methodology-item-value">7 (discovery, alternative, local, Slovenia, B Corp, by-name, persona)</div>
       </div>
       <div class="methodology-item">
-        <div class="methodology-item-label">Reproducible</div>
-        <div class="methodology-item-value">Yes — full prompts and screenshots on file</div>
+        <div class="methodology-item-label">Bias validation</div>
+        <div class="methodology-item-value">Perplexity re-run on clean account (25 May 2026)</div>
       </div>
     </div>
   </div>
