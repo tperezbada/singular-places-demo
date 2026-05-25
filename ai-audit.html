@@ -714,7 +714,7 @@
       <div class="scorecard-row">
         <div class="prompt-cell">Generic discovery<br><small style="color:var(--ink-muted); font-weight: 400;">"Best regenerative travel platforms in Europe"</small></div>
         <div class="score-cell fail">— not listed</div>
-        <div class="score-cell win">#1</div>
+        <div class="score-cell fail">— not listed</div>
         <div class="score-cell fail">— not listed</div>
         <div class="score-cell fail">— not listed</div>
       </div>
@@ -722,7 +722,7 @@
       <div class="scorecard-row">
         <div class="prompt-cell">Alternative to Booking.com<br><small style="color:var(--ink-muted); font-weight: 400;">"Best alternatives for regenerative luxury"</small></div>
         <div class="score-cell fail">— not listed</div>
-        <div class="score-cell win">#1</div>
+        <div class="score-cell fail">— not listed</div>
         <div class="score-cell warn">#5</div>
         <div class="score-cell fail">— not listed</div>
       </div>
@@ -730,7 +730,7 @@
       <div class="scorecard-row">
         <div class="prompt-cell">Money stays in local community<br><small style="color:var(--ink-muted); font-weight: 400;">"7-day trip, measurable impact"</small></div>
         <div class="score-cell">—</div>
-        <div class="score-cell win">#1</div>
+        <div class="score-cell fail">— not listed</div>
         <div class="score-cell fail">— not listed</div>
         <div class="score-cell fail">— not listed</div>
       </div>
@@ -746,7 +746,7 @@
       <div class="scorecard-row">
         <div class="prompt-cell">B Corp certified platforms<br><small style="color:var(--ink-muted); font-weight: 400;">"Independent, regenerative hospitality"</small></div>
         <div class="score-cell">—</div>
-        <div class="score-cell fail">— not listed</div>
+        <div class="score-cell warn">subcategory</div>
         <div class="score-cell fail">— not listed</div>
         <div class="score-cell fail">— not listed</div>
       </div>
@@ -782,49 +782,60 @@
 <!-- ============================== STORY 1 — PERPLEXITY ============================== -->
 <section class="story-section">
   <div class="container">
-    <div class="story-label">Story one · The good news</div>
-    <h2 class="story-title">Perplexity already loves you.</h2>
+    <div class="story-label">Story one · The mechanics of recommendation</div>
+    <h2 class="story-title">Perplexity recommends Singular Places #1 — but only when the user describes a specific situation.</h2>
     <p class="story-lead">
-      In every Perplexity prompt where regenerative travel was the topic, Singular Places appeared in <strong>position #1</strong>. Perplexity is the AI most used by sophisticated, research-oriented travellers — exactly the Meaningful Explorer.
+      In generic discovery queries, Perplexity recommends Sawday's, SLH, Green Pearls, Mr&nbsp;&amp;&nbsp;Mrs Smith. Singular Places <strong>does not appear</strong>. But the moment the prompt describes a real customer scenario — a 38-year-old finance professional in London, planning a partner's 40th birthday — Perplexity puts SP in <strong>position #1</strong>, above Regenerative Travel, Black Tomato and Green Pearls.
     </p>
 
+    <div style="background: rgba(184, 152, 92, 0.12); border-left: 3px solid var(--amber); padding: var(--space-3) var(--space-4); border-radius: var(--radius); margin: var(--space-4) 0 var(--space-6); max-width: 820px;">
+      <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; letter-spacing: 0.1em; color: var(--amber-deep); text-transform: uppercase; margin-bottom: var(--space-2);">Methodological note · validated</p>
+      <p style="color: var(--ink-soft); font-size: 0.95rem; line-height: 1.55;">
+        Perplexity personalises results based on user history. The team's first test was conducted on an account that had previously queried "Singular Places" several times. To eliminate bias, we re-ran every prompt on a separate Chrome profile with a fresh Perplexity account on 25 May 2026. The findings reported below are from the clean account.
+      </p>
+    </div>
+
     <div class="ai-quotes">
-      <div class="ai-quote">
+      <div class="ai-quote fail">
         <div class="ai-quote-source">
-          <span class="ai-quote-ai">PERPLEXITY · prompt 1 · Generic discovery</span>
-          <span class="ai-quote-prompt">22 May 2026</span>
+          <span class="ai-quote-ai">PERPLEXITY (clean account) · generic discovery</span>
+          <span class="ai-quote-prompt">25 May 2026</span>
         </div>
-        <p class="ai-quote-text">Singular Places — Berlin-based regenerative travel platform curating independent boutique hotels, restaurants, wineries and local experts. Good for: Europe-focused trips, design-led small properties.</p>
-        <p class="ai-quote-note">Listed first, ahead of Regenerative Travel and A'ARU Collective. The "Hyper-curated regenerative platforms" section opens with SP.</p>
+        <p class="ai-quote-text">For your brief, the strongest places to book are SLH's Considerate Collection, Green Pearls, Mr &amp; Mrs Smith, and a high-touch luxury advisor like Scott Dunn.</p>
+        <p class="ai-quote-note">In the generic discovery prompt, Perplexity recommended four alternatives — none of them Singular Places. The same result repeated for "alternative to Booking.com" and "7-day trip with local impact". SP did not appear in any discovery query.</p>
       </div>
 
       <div class="ai-quote">
         <div class="ai-quote-source">
-          <span class="ai-quote-ai">PERPLEXITY · prompt 7 · 40th birthday persona</span>
-          <span class="ai-quote-prompt">22 May 2026</span>
+          <span class="ai-quote-ai">PERPLEXITY (clean account) · 40th birthday persona</span>
+          <span class="ai-quote-prompt">25 May 2026</span>
         </div>
-        <p class="ai-quote-text">Built exactly for people who want authentic stays, meaningful impact and deeper connections, rather than big-box luxury.</p>
-        <p class="ai-quote-note">Listed first, ahead of Regenerative Travel, A'ARU and B Corp trip designers. Perplexity describes SP using the brand's exact own language.</p>
+        <p class="ai-quote-text">For your partner's 40th, I'd lean toward Singular Places, Regenerative Travel, Black Tomato, Green Pearls, and Select Green Hotels. Singular Places is probably the closest match to what you described.</p>
+        <p class="ai-quote-note">The moment the prompt describes a real customer scenario, SP moves to position #1 — above Regenerative Travel and Black Tomato. Same AI. Same week. Different intent surfaced.</p>
       </div>
     </div>
 
     <div class="stat-row">
-      <div class="stat-card">
-        <div class="stat-card-num">3/3</div>
-        <div class="stat-card-label">Discovery prompts</div>
-        <p class="stat-card-desc">Times SP was ranked #1 by Perplexity in regenerative travel queries</p>
+      <div class="stat-card fail">
+        <div class="stat-card-num">0/3</div>
+        <div class="stat-card-label">Generic discovery</div>
+        <p class="stat-card-desc">Times SP appeared at all in Perplexity's generic discovery prompts (clean account)</p>
       </div>
       <div class="stat-card">
         <div class="stat-card-num">#1</div>
-        <div class="stat-card-label">vs Regenerative Travel</div>
-        <p class="stat-card-desc">SP ranked above its closest direct competitor in every Perplexity test</p>
+        <div class="stat-card-label">Persona-based query</div>
+        <p class="stat-card-desc">SP ranked above Regenerative Travel and Black Tomato in the only prompt that described a real customer scenario</p>
       </div>
       <div class="stat-card">
-        <div class="stat-card-num">86%</div>
-        <div class="stat-card-label">accurately cited</div>
-        <p class="stat-card-desc">Perplexity quoted SP's local-impact figure correctly, unprompted</p>
+        <div class="stat-card-num">1:1</div>
+        <div class="stat-card-label">Intent-to-recommendation</div>
+        <p class="stat-card-desc">When the user describes the Meaningful Explorer profile precisely, Perplexity surfaces SP. Otherwise, never.</p>
       </div>
     </div>
+
+    <p style="margin-top: var(--space-6); font-style: italic; font-family: var(--font-display); font-size: 1.4rem; color: var(--moss); font-variation-settings: 'opsz' 96, 'SOFT' 100; line-height: 1.5; max-width: 820px;">
+      "Singular Places wins on intention. Singular Places loses on exploration. The strategy is not to be everywhere — it is to be unmissable to the Meaningful Explorer who already knows what they're looking for."
+    </p>
   </div>
 </section>
 
