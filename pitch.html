@@ -11,35 +11,50 @@
 <link rel="stylesheet" href="styles.css">
 <style>
 /* ============================================================
-   PITCH PAGE — Eight ideas for Lars
+   PITCH PAGE V2 — Visual, data-first, magazine-style
    ============================================================ */
 
 .pitch-page { background: var(--paper); }
 
-/* ===== HERO ===== */
-.pitch-hero {
+/* ============ HERO ============ */
+.v2-hero {
   min-height: 100vh;
+  background: linear-gradient(135deg, #0F1410 0%, #1A2418 35%, #2A3727 70%, #4A5D3A 100%);
+  color: var(--paper-light);
   display: flex;
   align-items: center;
-  background: linear-gradient(135deg, #0F1410 0%, #1A2418 30%, #2A3727 70%, #4A5D3A 100%);
   position: relative;
   overflow: hidden;
-  color: var(--paper-light);
 }
-.pitch-hero::before {
+.v2-hero::before {
   content: "";
   position: absolute;
   inset: 0;
-  opacity: 0.16;
+  opacity: 0.18;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.5' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
-.pitch-hero-content {
+.v2-hero-mega-num {
+  position: absolute;
+  top: 50%;
+  right: -5vw;
+  transform: translateY(-50%);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(20rem, 50vw, 50rem);
+  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+  color: rgba(168, 129, 74, 0.07);
+  line-height: 0.8;
+  letter-spacing: -0.08em;
+  z-index: 0;
+  pointer-events: none;
+}
+.v2-hero-content {
   position: relative;
   z-index: 1;
   max-width: 1100px;
   padding: var(--space-12) var(--space-3);
 }
-.pitch-hero-eyebrow {
+.v2-hero-eyebrow {
   font-size: 0.78rem;
   letter-spacing: 0.32em;
   text-transform: uppercase;
@@ -50,41 +65,63 @@
   align-items: center;
   gap: 14px;
 }
-.pitch-hero-eyebrow::before {
+.v2-hero-eyebrow::before {
   content: "";
   width: 40px;
   height: 1px;
   background: var(--amber-light);
 }
-.pitch-hero h1 {
+.v2-hero h1 {
   color: var(--paper-light);
-  font-size: clamp(3rem, 8vw, 7rem);
+  font-size: clamp(3rem, 7.5vw, 6.5rem);
   letter-spacing: -0.045em;
-  line-height: 0.94;
+  line-height: 0.95;
   margin-bottom: var(--space-4);
   font-weight: 400;
 }
-.pitch-hero h1 em {
+.v2-hero h1 em {
   font-style: italic;
   color: var(--amber-light);
   font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
 }
-.pitch-hero-sub {
-  font-size: 1.35rem;
+.v2-hero-sub {
+  font-size: 1.3rem;
   line-height: 1.55;
   max-width: 760px;
   color: rgba(247, 242, 229, 0.92);
   margin-bottom: var(--space-6);
   font-weight: 300;
 }
-.pitch-hero-byline {
+.v2-hero-stats {
+  display: flex;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+  margin-top: var(--space-6);
+  padding-top: var(--space-4);
+  border-top: 1px solid rgba(255,255,255,0.15);
+}
+.v2-hero-stat {
+  display: flex;
+  flex-direction: column;
+}
+.v2-hero-stat-num {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: 1.1rem;
+  font-size: 3rem;
+  font-variation-settings: "opsz" 144, "SOFT" 100;
   color: var(--amber-light);
-  font-variation-settings: "opsz" 36, "SOFT" 80;
+  line-height: 1;
+  margin-bottom: 4px;
 }
-.pitch-scroll-hint {
+.v2-hero-stat-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(247,242,229,0.65);
+}
+
+.scroll-hint {
   position: absolute;
   bottom: 40px;
   left: 50%;
@@ -94,27 +131,21 @@
   letter-spacing: 0.3em;
   text-transform: uppercase;
   animation: bounce 2.5s ease-in-out infinite;
+  z-index: 2;
 }
 @keyframes bounce {
   0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.5; }
   50% { transform: translateX(-50%) translateY(8px); opacity: 1; }
 }
 
-/* ===== THE THREAD SECTION ===== */
-.thread-section {
+/* ============ THREAD ============ */
+.v2-thread {
   padding: var(--space-12) 0;
   background: var(--paper-alt);
   text-align: center;
+  position: relative;
 }
-.thread-eyebrow {
-  font-size: 0.78rem;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--terracotta);
-  margin-bottom: var(--space-3);
-  font-weight: 600;
-}
-.thread-quote {
+.v2-thread-quote {
   font-family: var(--font-display);
   font-style: italic;
   font-size: clamp(1.8rem, 4vw, 3rem);
@@ -123,77 +154,109 @@
   line-height: 1.25;
   letter-spacing: -0.025em;
   max-width: 1000px;
-  margin: 0 auto var(--space-4);
+  margin: 0 auto var(--space-6);
 }
-.thread-quote em {
+.v2-thread-quote em {
   color: var(--terracotta);
   font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
 }
-.thread-pillars {
+.v2-pillars {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-3);
-  max-width: 900px;
-  margin: var(--space-6) auto 0;
+  max-width: 1000px;
+  margin: 0 auto;
 }
-@media (max-width: 800px) { .thread-pillars { grid-template-columns: 1fr; } }
-.thread-pillar {
+@media (max-width: 800px) { .v2-pillars { grid-template-columns: 1fr; } }
+.v2-pillar {
   background: var(--paper-light);
-  padding: var(--space-3) var(--space-4);
+  padding: var(--space-4);
   border-radius: var(--radius);
-  border-top: 2px solid var(--moss);
+  position: relative;
+  overflow: hidden;
 }
-.thread-pillar-label {
+.v2-pillar-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--moss-light), var(--moss));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-3);
+  color: var(--paper-light);
+}
+.v2-pillar-label {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.72rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--moss);
+  color: var(--terracotta);
   margin-bottom: 6px;
 }
-.thread-pillar-text {
+.v2-pillar-title {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: 1.15rem;
-  font-variation-settings: "opsz" 48, "SOFT" 80;
+  font-size: 1.5rem;
+  font-variation-settings: "opsz" 96, "SOFT" 80;
   color: var(--ink);
-  line-height: 1.3;
+  line-height: 1.2;
 }
 
-/* ===== IDEA SECTION ===== */
-.idea {
-  padding: var(--space-12) 0;
+/* ============ IDEA (the big one) ============ */
+.v2-idea {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 90vh;
+  position: relative;
+}
+@media (max-width: 900px) {
+  .v2-idea { grid-template-columns: 1fr; min-height: auto; }
+}
+
+.v2-idea-visual {
   position: relative;
   overflow: hidden;
-  border-bottom: 1px solid var(--line);
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6);
 }
-.idea:nth-of-type(odd) { background: var(--paper); }
-.idea:nth-of-type(even) { background: var(--paper-alt); }
-
-.idea-number-bg {
+.v2-idea-visual::after {
+  content: "";
   position: absolute;
-  top: 50%;
-  right: -2vw;
-  transform: translateY(-50%);
+  inset: 0;
+  opacity: 0.18;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.5' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.v2-idea-text {
+  padding: var(--space-8) var(--space-6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.v2-idea:nth-child(even) .v2-idea-visual { order: 2; }
+@media (max-width: 900px) {
+  .v2-idea:nth-child(even) .v2-idea-visual { order: -1; }
+}
+
+.v2-idea-num-big {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: clamp(14rem, 28vw, 28rem);
+  font-size: clamp(12rem, 22vw, 24rem);
   font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
-  color: rgba(184, 98, 62, 0.06);
-  line-height: 0.85;
-  pointer-events: none;
-  letter-spacing: -0.05em;
-  z-index: 0;
-}
-
-.idea-content {
+  line-height: 0.8;
+  letter-spacing: -0.06em;
+  color: rgba(247, 242, 229, 0.95);
   position: relative;
   z-index: 1;
-  max-width: 900px;
 }
 
-.idea-label {
-  font-size: 0.75rem;
+.v2-idea-eyebrow {
+  font-size: 0.72rem;
   letter-spacing: 0.32em;
   text-transform: uppercase;
   color: var(--terracotta);
@@ -203,127 +266,489 @@
   align-items: center;
   gap: 12px;
 }
-.idea-label::before {
+.v2-idea-eyebrow::before {
   content: "";
   width: 32px;
   height: 1px;
   background: var(--terracotta);
 }
 
-.idea-title {
+.v2-idea-title {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: clamp(2.5rem, 5.5vw, 4.2rem);
+  font-size: clamp(2.2rem, 4.5vw, 3.5rem);
   font-variation-settings: "opsz" 144, "SOFT" 100;
   line-height: 1.05;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.025em;
+  margin-bottom: var(--space-3);
+  color: var(--ink);
+}
+
+.v2-idea-body {
+  font-size: 1.08rem;
+  line-height: 1.65;
+  color: var(--ink-soft);
   margin-bottom: var(--space-4);
 }
+.v2-idea-body strong { color: var(--ink); font-weight: 500; }
+.v2-idea-body em { font-style: italic; color: var(--moss-dark); }
 
-.idea-body {
-  font-size: 1.2rem;
-  line-height: 1.7;
-  color: var(--ink-soft);
-  margin-bottom: var(--space-6);
-  max-width: 760px;
-}
-
-.idea-body strong {
-  color: var(--ink);
-  font-weight: 500;
-}
-
-.idea-body em {
-  font-style: italic;
-  color: var(--moss-dark);
-}
-
-/* "For Lars" quote box */
-.for-lars {
+.v2-for-lars {
   background: var(--ink);
   color: var(--paper-light);
-  padding: var(--space-5) var(--space-6);
-  border-radius: var(--radius-lg);
-  position: relative;
-  max-width: 820px;
-  margin-top: var(--space-4);
+  padding: var(--space-4);
+  border-radius: var(--radius);
   border-left: 3px solid var(--amber-light);
+  margin-top: var(--space-3);
 }
-.for-lars-label {
+.v2-for-lars-label {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--amber-light);
   margin-bottom: var(--space-2);
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
 }
-.for-lars-label::before {
-  content: "";
-  width: 24px;
-  height: 1px;
-  background: var(--amber-light);
-}
-.for-lars-quote {
+.v2-for-lars-quote {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: clamp(1.2rem, 2vw, 1.55rem);
+  font-size: 1.15rem;
   font-variation-settings: "opsz" 96, "SOFT" 100;
-  color: var(--paper-light);
   line-height: 1.45;
-  letter-spacing: -0.01em;
+  color: var(--paper-light);
 }
 
-/* ===== INDEX / TABLE OF CONTENTS ===== */
-.index-section {
-  padding: var(--space-8) 0;
-  background: var(--ink);
+/* ===== Visual variants per idea ===== */
+
+/* Idea 1: Network — moss with floating dots */
+.viz-network {
+  background: linear-gradient(135deg, #2A3727 0%, #4A5D3A 100%);
+}
+.viz-network-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
   color: var(--paper-light);
 }
-.index-section h2 {
+.viz-network-num {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: 1.6rem;
-  font-variation-settings: "opsz" 96, "SOFT" 80;
+  font-size: clamp(7rem, 14vw, 14rem);
+  color: var(--amber-light);
+  line-height: 0.9;
+  margin-bottom: var(--space-2);
+  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+  letter-spacing: -0.04em;
+}
+.viz-network-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(247,242,229,0.85);
+  margin-bottom: var(--space-4);
+}
+.viz-network-sub {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.5rem;
+  color: var(--amber-light);
+  font-variation-settings: "opsz" 96, "SOFT" 100;
+  margin-bottom: var(--space-4);
+}
+.viz-network-logos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+  margin-top: var(--space-4);
+}
+.viz-network-logo {
+  padding: 8px 16px;
+  background: rgba(247,242,229,0.08);
+  border: 1px solid rgba(247,242,229,0.18);
+  border-radius: 100px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--paper-light);
+  font-variation-settings: "opsz" 36, "SOFT" 80;
+}
+
+/* Idea 2: Press — terracota magazine covers */
+.viz-press {
+  background: linear-gradient(135deg, #8E4A2D 0%, #B8623E 100%);
+}
+.viz-press-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: var(--paper-light);
+}
+.viz-magazines {
+  display: flex;
+  gap: var(--space-2);
+  justify-content: center;
+  margin-bottom: var(--space-4);
+  flex-wrap: wrap;
+}
+.viz-magazine {
+  background: var(--paper-light);
+  color: var(--ink);
+  padding: var(--space-4) var(--space-3);
+  border-radius: var(--radius);
+  min-width: 130px;
+  text-align: center;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+  transform: rotate(-2deg);
+  transition: transform 0.3s ease;
+}
+.viz-magazine:nth-child(2) { transform: rotate(1deg); margin-top: var(--space-3); }
+.viz-magazine:nth-child(3) { transform: rotate(-1deg); }
+.viz-magazine:hover { transform: rotate(0) translateY(-6px); }
+.viz-magazine-title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.05rem;
+  font-variation-settings: "opsz" 48, "SOFT" 80;
+  color: var(--terracotta-deep);
+  margin-bottom: var(--space-1);
+  line-height: 1.2;
+}
+.viz-magazine-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+.viz-press-stat {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(5rem, 10vw, 10rem);
+  color: var(--paper-light);
+  line-height: 0.9;
+  margin-top: var(--space-4);
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+  letter-spacing: -0.04em;
+}
+.viz-press-stat-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(247,242,229,0.8);
+  margin-top: -8px;
+}
+
+/* Idea 3: Manifesto — dark with countdown */
+.viz-manifesto {
+  background: linear-gradient(135deg, #0F1410 0%, #1F2421 100%);
+  color: var(--paper-light);
+  text-align: center;
+}
+.viz-manifesto-content { position: relative; z-index: 1; }
+.viz-clock {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(7rem, 16vw, 16rem);
+  color: var(--terracotta);
+  line-height: 0.85;
+  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+  letter-spacing: -0.05em;
+  margin-bottom: var(--space-3);
+}
+.viz-clock-unit {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
   color: var(--amber-light);
   margin-bottom: var(--space-4);
 }
-.index-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-2);
+.viz-manifesto-line {
+  width: 80px;
+  height: 2px;
+  background: var(--amber-light);
+  margin: 0 auto var(--space-3);
 }
-@media (max-width: 720px) { .index-grid { grid-template-columns: 1fr; } }
-.index-item {
-  display: grid;
-  grid-template-columns: 50px 1fr;
-  gap: var(--space-2);
-  padding: var(--space-2) 0;
-  border-bottom: 1px solid rgba(255,255,255,0.12);
-  font-size: 0.98rem;
-  color: rgba(247,242,229,0.85);
-  text-decoration: none;
-  transition: padding-left 0.2s ease;
-}
-.index-item:hover {
-  padding-left: var(--space-2);
-  color: var(--paper-light);
-}
-.index-item-num {
+.viz-manifesto-tag {
   font-family: var(--font-display);
   font-style: italic;
+  font-size: 1.5rem;
   color: var(--amber-light);
-  font-variation-settings: "opsz" 48;
+  font-variation-settings: "opsz" 96, "SOFT" 100;
 }
 
-/* ===== SEQUENCE SECTION ===== */
-.sequence-section {
+/* Idea 4: Named experiences — amber with cards */
+.viz-experiences {
+  background: linear-gradient(135deg, #826434 0%, #A8814A 100%);
+  color: var(--paper-light);
+}
+.viz-experiences-content {
+  position: relative;
+  z-index: 1;
+}
+.viz-exp-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2);
+  max-width: 460px;
+}
+.viz-exp-card {
+  background: rgba(0,0,0,0.25);
+  border: 1px solid rgba(247,242,229,0.15);
+  padding: var(--space-3);
+  border-radius: var(--radius);
+  transition: transform 0.3s ease;
+}
+.viz-exp-card:hover { transform: translateY(-4px); }
+.viz-exp-card-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--paper-light);
+  opacity: 0.7;
+  margin-bottom: 6px;
+}
+.viz-exp-card-title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.3rem;
+  font-variation-settings: "opsz" 48, "SOFT" 80;
+  color: var(--paper-light);
+  line-height: 1.15;
+  margin-bottom: 6px;
+}
+.viz-exp-card-tag {
+  font-size: 0.78rem;
+  color: rgba(247,242,229,0.7);
+}
+
+/* Idea 5: Travel Experts — circles of people */
+.viz-experts {
+  background: linear-gradient(135deg, #1A2418 0%, #2A3727 100%);
+  color: var(--paper-light);
+}
+.viz-experts-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+.viz-experts-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.viz-expert {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--moss-light), var(--moss));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.3rem;
+  color: var(--paper-light);
+  font-variation-settings: "opsz" 36, "SOFT" 100;
+  position: relative;
+}
+.viz-expert::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border: 1px dashed var(--amber-light);
+  border-radius: 50%;
+  opacity: 0.4;
+}
+.viz-experts-stat {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(4rem, 9vw, 9rem);
+  color: var(--amber-light);
+  line-height: 0.9;
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+  letter-spacing: -0.04em;
+}
+.viz-experts-stat-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(247,242,229,0.7);
+}
+
+/* Idea 6: FAM Trips — uses real Vila Planinka photo */
+.viz-fam {
+  background-image: url('vila-planinka.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.viz-fam::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(15,20,16,0.7) 0%, rgba(42,55,39,0.5) 100%);
+}
+.viz-fam-content {
+  position: relative;
+  z-index: 2;
+  color: var(--paper-light);
+  text-align: center;
+}
+.viz-fam-stat {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(5rem, 11vw, 11rem);
+  color: var(--amber-light);
+  line-height: 0.9;
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+  letter-spacing: -0.04em;
+  margin-bottom: 0;
+}
+.viz-fam-line {
+  width: 100px;
+  height: 1px;
+  background: var(--amber-light);
+  margin: var(--space-2) auto;
+}
+.viz-fam-caption {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.3rem;
+  color: var(--paper-light);
+  font-variation-settings: "opsz" 96, "SOFT" 100;
+  margin-top: var(--space-3);
+}
+.viz-fam-credit {
+  position: absolute;
+  bottom: 14px;
+  right: 18px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(247,242,229,0.5);
+  z-index: 2;
+}
+
+/* Idea 7: Anti-Bucket-List — strikethrough effect */
+.viz-bucket {
+  background: linear-gradient(135deg, #B8623E 0%, #D88860 100%);
+  color: var(--paper-light);
+  text-align: center;
+}
+.viz-bucket-content { position: relative; z-index: 1; }
+.viz-bucket-strike {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  color: rgba(247,242,229,0.5);
+  text-decoration: line-through;
+  text-decoration-thickness: 3px;
+  line-height: 1.2;
+  margin-bottom: var(--space-3);
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+}
+.viz-bucket-vs {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--paper-light);
+  margin: var(--space-2) 0;
+  opacity: 0.7;
+}
+.viz-bucket-yes {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  color: var(--paper-light);
+  line-height: 1.15;
+  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+  letter-spacing: -0.025em;
+}
+
+/* Idea 8: Spain — map style */
+.viz-spain {
+  background: linear-gradient(135deg, #2A3727 0%, #4A5D3A 50%, #6B7F5A 100%);
+  color: var(--paper-light);
+}
+.viz-spain-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+.viz-spain-flag {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(5rem, 11vw, 11rem);
+  color: var(--amber-light);
+  line-height: 0.9;
+  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+  letter-spacing: -0.04em;
+}
+.viz-spain-clusters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin: var(--space-4) 0;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.viz-spain-cluster {
+  padding: 6px 12px;
+  background: rgba(0,0,0,0.25);
+  border: 1px solid rgba(247,242,229,0.15);
+  border-radius: 100px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--paper-light);
+  font-variation-settings: "opsz" 36, "SOFT" 80;
+}
+.viz-spain-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+  max-width: 380px;
+  margin: var(--space-4) auto 0;
+}
+.viz-spain-stat {
+  text-align: center;
+}
+.viz-spain-stat-num {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 2.5rem;
+  color: var(--amber-light);
+  font-variation-settings: "opsz" 96, "SOFT" 100;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.viz-spain-stat-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(247,242,229,0.65);
+}
+
+/* ============ WAVES (timeline) ============ */
+.v2-waves {
   padding: var(--space-12) 0;
   background: var(--paper-deep);
 }
-.sequence-section h2 {
+.v2-waves h2 {
   font-family: var(--font-display);
   font-style: italic;
   font-size: clamp(2.3rem, 5vw, 3.8rem);
@@ -333,11 +758,11 @@
   margin-bottom: var(--space-3);
   max-width: 900px;
 }
-.sequence-section h2 em {
+.v2-waves h2 em {
   color: var(--terracotta);
   font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
 }
-.sequence-section .section-eyebrow {
+.v2-waves .section-eyebrow {
   font-size: 0.78rem;
   letter-spacing: 0.32em;
   text-transform: uppercase;
@@ -348,88 +773,140 @@
   align-items: center;
   gap: 12px;
 }
-.sequence-section .section-eyebrow::before {
+.v2-waves .section-eyebrow::before {
   content: "";
   width: 32px;
   height: 1px;
   background: var(--terracotta);
 }
 
-.waves {
+.timeline {
   margin-top: var(--space-6);
+  position: relative;
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 22px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--terracotta) 12%, var(--terracotta) 88%, transparent);
+  opacity: 0.4;
+  z-index: 0;
+}
+@media (max-width: 800px) {
+  .timeline::before { display: none; }
+}
+.timeline-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-4);
+  position: relative;
+  z-index: 1;
 }
-@media (max-width: 900px) { .waves { grid-template-columns: 1fr; } }
-.wave {
-  background: var(--paper-light);
-  padding: var(--space-5);
-  border-radius: var(--radius-lg);
-  border-top: 3px solid var(--moss);
+@media (max-width: 800px) { .timeline-grid { grid-template-columns: 1fr; } }
+.tl-wave {
+  text-align: center;
 }
-.wave-label {
+.tl-wave-dot {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--terracotta);
+  color: var(--paper-light);
+  margin: 0 auto var(--space-3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.4rem;
+  font-variation-settings: "opsz" 48, "SOFT" 80;
+  position: relative;
+  z-index: 1;
+}
+.tl-wave-period {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.72rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--terracotta);
   margin-bottom: var(--space-2);
-  font-weight: 500;
 }
-.wave h3 {
+.tl-wave-title {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: 1.6rem;
+  font-size: 1.7rem;
   font-variation-settings: "opsz" 96, "SOFT" 80;
   margin-bottom: var(--space-3);
   line-height: 1.15;
-  letter-spacing: -0.02em;
+  color: var(--ink);
 }
-.wave-list {
+.tl-ideas {
   list-style: none;
   padding: 0;
   margin: 0;
+  text-align: left;
+  background: var(--paper-light);
+  border-radius: var(--radius);
+  padding: var(--space-3);
 }
-.wave-list li {
+.tl-ideas li {
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--line-soft);
   display: grid;
   grid-template-columns: 28px 1fr;
   gap: 8px;
-  padding: var(--space-2) 0;
-  border-bottom: 1px solid var(--line-soft);
-  color: var(--ink-soft);
-  font-size: 0.98rem;
-  line-height: 1.5;
-}
-.wave-list li:last-child { border-bottom: none; }
-.wave-list li strong {
-  display: block;
+  font-size: 0.95rem;
   color: var(--ink);
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 1.05rem;
-  font-variation-settings: "opsz" 36, "SOFT" 80;
+  line-height: 1.4;
 }
-.wave-list li::before {
-  content: counter(idea-counter, decimal-leading-zero);
-  counter-increment: idea-counter;
+.tl-ideas li:last-child { border-bottom: none; }
+.tl-ideas li::before {
+  content: attr(data-num);
   font-family: var(--font-display);
   font-style: italic;
   color: var(--terracotta);
   font-size: 0.95rem;
 }
-.wave-list { counter-reset: idea-counter; }
-.wave[data-start="3"] .wave-list { counter-reset: idea-counter 2; }
-.wave[data-start="6"] .wave-list { counter-reset: idea-counter 5; }
 
-/* ===== CTA ===== */
-.pitch-cta {
+/* ============ CTA ============ */
+.v2-cta {
   padding: var(--space-12) 0;
   background: linear-gradient(135deg, var(--ink) 0%, #2A3727 100%);
   color: var(--paper-light);
   text-align: center;
+  position: relative;
+  overflow: hidden;
 }
-.pitch-cta h2 {
+.v2-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.15;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.5' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.v2-cta .container { position: relative; z-index: 1; }
+.v2-cta-big-zero {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(8rem, 18vw, 18rem);
+  color: var(--amber-light);
+  line-height: 0.85;
+  margin-bottom: var(--space-3);
+  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+  letter-spacing: -0.06em;
+}
+.v2-cta-big-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(247,242,229,0.75);
+  margin-bottom: var(--space-4);
+}
+.v2-cta h2 {
   font-family: var(--font-display);
   font-style: italic;
   font-size: clamp(2.5rem, 5vw, 4.5rem);
@@ -440,23 +917,19 @@
   letter-spacing: -0.025em;
   line-height: 1.05;
 }
-.pitch-cta h2 em {
+.v2-cta h2 em {
   color: var(--amber-light);
   font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
 }
-.pitch-cta-quote {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: clamp(1.3rem, 2.2vw, 1.7rem);
-  font-variation-settings: "opsz" 96, "SOFT" 100;
-  color: var(--amber-light);
-  max-width: 800px;
-  margin: var(--space-6) auto 0;
-  line-height: 1.45;
+.v2-cta p {
+  color: rgba(247,242,229,0.85);
+  font-size: 1.15rem;
+  line-height: 1.6;
+  max-width: 720px;
+  margin: 0 auto var(--space-3);
 }
 
-/* ===== AUTHORS / FOOTER ===== */
-.pitch-authors {
+.v2-authors {
   padding: var(--space-6) 0;
   background: var(--paper);
   color: var(--ink-muted);
@@ -464,7 +937,7 @@
   font-size: 0.85rem;
   letter-spacing: 0.04em;
 }
-.pitch-authors strong {
+.v2-authors strong {
   color: var(--ink);
   font-family: var(--font-display);
   font-style: italic;
@@ -472,18 +945,18 @@
   font-size: 1.05rem;
 }
 
-/* ===== SCROLL ANIMATIONS ===== */
+/* Scroll-driven animations */
 @media (prefers-reduced-motion: no-preference) {
   @supports (animation-timeline: view()) {
-    .idea-content,
-    .thread-pillar,
-    .wave {
+    .v2-idea-text > *,
+    .v2-pillar,
+    .tl-wave {
       animation: rise-in linear both;
       animation-timeline: view();
-      animation-range: entry 0% entry 60%;
+      animation-range: entry 0% entry 50%;
     }
     @keyframes rise-in {
-      from { opacity: 0; transform: translateY(40px); }
+      from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
   }
@@ -502,7 +975,7 @@
     <ul class="nav-menu">
       <li><a href="pitch.html">The Pitch</a></li>
       <li><a href="ai-audit.html">AI Audit</a></li>
-      <li><a href="pitch-networks.html">Deep dive · Networks</a></li>
+      <li><a href="pitch-networks.html">Deep dive</a></li>
       <li><a href="index.html">Proposal</a></li>
     </ul>
     <a href="https://wa.me/" class="nav-cta">Talk to a Singular Expert</a>
@@ -510,265 +983,397 @@
 </nav>
 
 <!-- ============================== HERO ============================== -->
-<section class="pitch-hero">
+<section class="v2-hero">
+  <div class="v2-hero-mega-num">8</div>
   <div class="container">
-    <div class="pitch-hero-content">
-      <div class="pitch-hero-eyebrow">A pitch for Lars · 8 ideas · zero ad spend · one thesis</div>
-      <h1>How Singular Places reaches the wealthy <em>without buying their attention</em>.</h1>
-      <p class="pitch-hero-sub">
-        Eight ideas. None require advertising. None require algorithms. All compound over time. All reach the Meaningful Explorer through the channels they actually use — trusted advisors, authoritative editorial, and the direct experience of the product.
+    <div class="v2-hero-content">
+      <div class="v2-hero-eyebrow">A pitch for Lars · Eight ideas · Zero ad spend</div>
+      <h1>Reach the wealthy <em>without buying their attention</em>.</h1>
+      <p class="v2-hero-sub">
+        Eight ideas. No advertising. No algorithms. Each one activates an asset Singular Places already owns. Each one compounds with the next. Built around how the wealthy actually discover travel — through trusted advisors, authoritative editorial, and the direct experience of the product.
       </p>
-      <p class="pitch-hero-byline">— Team Singular Places · IE Business School · MBA Impact Project · May 2026</p>
+
+      <div class="v2-hero-stats">
+        <div class="v2-hero-stat">
+          <div class="v2-hero-stat-num">8</div>
+          <div class="v2-hero-stat-label">Frugal levers</div>
+        </div>
+        <div class="v2-hero-stat">
+          <div class="v2-hero-stat-num">€0</div>
+          <div class="v2-hero-stat-label">Ad spend required</div>
+        </div>
+        <div class="v2-hero-stat">
+          <div class="v2-hero-stat-num">12</div>
+          <div class="v2-hero-stat-label">Months to execute</div>
+        </div>
+        <div class="v2-hero-stat">
+          <div class="v2-hero-stat-num">3</div>
+          <div class="v2-hero-stat-label">Channels that matter</div>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="pitch-scroll-hint">scroll</div>
+  <div class="scroll-hint">scroll</div>
 </section>
 
-<!-- ============================== THE THREAD ============================== -->
-<section class="thread-section">
+<!-- ============================== THREAD ============================== -->
+<section class="v2-thread">
   <div class="container">
-    <div class="thread-eyebrow">The connecting thread</div>
-    <p class="thread-quote">
+    <p class="v2-thread-quote">
       All eight reach Lars's Explorer through channels they <em>actually use</em>.
     </p>
 
-    <div class="thread-pillars">
-      <div class="thread-pillar">
-        <div class="thread-pillar-label">Pillar one</div>
-        <div class="thread-pillar-text">Trusted advisors</div>
+    <div class="v2-pillars">
+      <div class="v2-pillar">
+        <div class="v2-pillar-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+        </div>
+        <div class="v2-pillar-label">Pillar one</div>
+        <div class="v2-pillar-title">Trusted advisors</div>
       </div>
-      <div class="thread-pillar">
-        <div class="thread-pillar-label">Pillar two</div>
-        <div class="thread-pillar-text">Authoritative editorial</div>
+      <div class="v2-pillar">
+        <div class="v2-pillar-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path></svg>
+        </div>
+        <div class="v2-pillar-label">Pillar two</div>
+        <div class="v2-pillar-title">Authoritative editorial</div>
       </div>
-      <div class="thread-pillar">
-        <div class="thread-pillar-label">Pillar three</div>
-        <div class="thread-pillar-text">Direct experience of the product</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================== INDEX ============================== -->
-<section class="index-section">
-  <div class="container">
-    <h2>The eight ideas, in order.</h2>
-    <div class="index-grid">
-      <a class="index-item" href="#idea-1"><span class="index-item-num">i.</span><span>Serandipians Network Membership</span></a>
-      <a class="index-item" href="#idea-2"><span class="index-item-num">ii.</span><span>Editorial PR anchored to the B Corp moment</span></a>
-      <a class="index-item" href="#idea-3"><span class="index-item-num">iii.</span><span>The Anti-OTA Manifesto</span></a>
-      <a class="index-item" href="#idea-4"><span class="index-item-num">iv.</span><span>Productised Named Experiences</span></a>
-      <a class="index-item" href="#idea-5"><span class="index-item-num">v.</span><span>Visible and Incentivised Travel Experts</span></a>
-      <a class="index-item" href="#idea-6"><span class="index-item-num">vi.</span><span>FAM Trips sequenced after Network Membership</span></a>
-      <a class="index-item" href="#idea-7"><span class="index-item-num">vii.</span><span>Anti-Bucket-List Campaign</span></a>
-      <a class="index-item" href="#idea-8"><span class="index-item-num">viii.</span><span>Spain as the Flagship Market</span></a>
-    </div>
-  </div>
-</section>
-
-<!-- ============================== IDEA 1 ============================== -->
-<section class="idea" id="idea-1">
-  <span class="idea-number-bg">i.</span>
-  <div class="container">
-    <div class="idea-content">
-      <div class="idea-label">Idea one · Distribution</div>
-      <h2 class="idea-title">Serandipians Network Membership.</h2>
-      <p class="idea-body">
-        Lars's Explorer books through a travel advisor, not a website. <strong>Serandipians is a by-invitation European network of 790 luxury travel agencies representing €6 billion in annual sales</strong> — and their clients are exactly Lars's target. Joining as a supply partner puts Singular Places <em>inside the advisor relationship</em> without a single euro of ad spend.
-      </p>
-      <div class="for-lars">
-        <div class="for-lars-label">For Lars</div>
-        <p class="for-lars-quote">"Your Explorer listens to their travel designer. The 790 agencies inside Serandipians are those designers. Right now none of them have a structural reason to recommend you. This fixes that."</p>
+      <div class="v2-pillar">
+        <div class="v2-pillar-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+        </div>
+        <div class="v2-pillar-label">Pillar three</div>
+        <div class="v2-pillar-title">Direct experience of the product</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================== IDEA 2 ============================== -->
-<section class="idea" id="idea-2">
-  <span class="idea-number-bg">ii.</span>
-  <div class="container">
-    <div class="idea-content">
-      <div class="idea-label">Idea two · Press</div>
-      <h2 class="idea-title">Editorial PR, anchored to the B Corp moment.</h2>
-      <p class="idea-body">
-        Five years of operation. Zero mainstream press. <strong>The story — a founder with 25 years in boutique hotels building a platform where 86% of every booking stays locally, now B Corp certified — is a feature article waiting to happen</strong> in FT How To Spend It, Condé Nast Traveller, and El País Semanal. One well-placed piece reaches the Explorer directly, gives advisors something to cite, <em>and feeds AI discovery tools simultaneously</em>.
-      </p>
-      <div class="for-lars">
-        <div class="for-lars-label">For Lars</div>
-        <p class="for-lars-quote">"B Corp certification is the best press trigger you will ever have. Most companies put the badge in the footer. You should treat it as a brand launch."</p>
+<!-- ============================== IDEA 1 — NETWORK ============================== -->
+<section class="v2-idea" id="idea-1">
+  <div class="v2-idea-visual viz-network">
+    <div class="viz-network-content">
+      <div class="viz-network-num">790</div>
+      <div class="viz-network-label">Member agencies</div>
+      <div class="viz-network-sub">€6 billion in annual sales</div>
+      <div class="viz-network-logos">
+        <span class="viz-network-logo">Aman</span>
+        <span class="viz-network-logo">Baglioni</span>
+        <span class="viz-network-logo">SLH</span>
+        <span class="viz-network-logo">Six Senses</span>
       </div>
+    </div>
+  </div>
+  <div class="v2-idea-text">
+    <div class="v2-idea-eyebrow">Idea one · Distribution</div>
+    <h2 class="v2-idea-title">Serandipians Network Membership.</h2>
+    <p class="v2-idea-body">
+      Lars's Explorer books through a travel advisor, not a website. <strong>Serandipians is a by-invitation European network of 790 luxury travel agencies representing €6 billion in annual sales</strong> — and their clients are exactly Lars's target. Joining as a supply partner puts Singular Places <em>inside the advisor relationship</em> without a single euro of ad spend.
+    </p>
+    <div class="v2-for-lars">
+      <div class="v2-for-lars-label">For Lars</div>
+      <p class="v2-for-lars-quote">"Your Explorer listens to their travel designer. The 790 agencies inside Serandipians are those designers. Right now none of them have a structural reason to recommend you. This fixes that."</p>
     </div>
   </div>
 </section>
 
-<!-- ============================== IDEA 3 ============================== -->
-<section class="idea" id="idea-3">
-  <span class="idea-number-bg">iii.</span>
-  <div class="container">
-    <div class="idea-content">
-      <div class="idea-label">Idea three · Positioning</div>
-      <h2 class="idea-title">The Anti-OTA Manifesto.</h2>
-      <p class="idea-body">
-        The website currently speaks to two audiences at once — the values-aligned HNW Explorer and a mainstream traveller being educated about sustainability — and <strong>lands clearly with neither</strong>. A short, declarative manifesto tells the visitor in <em>ten seconds</em> what Singular Places is, who it is for, and what it stands against. It is what Lars communicates naturally in conversation but the homepage does not yet say.
-      </p>
-      <div class="for-lars">
-        <div class="for-lars-label">For Lars</div>
-        <p class="for-lars-quote">"Your website confused our team on first visit — and we had already spoken to you. Your Explorer has ten seconds to decide if this is their platform. Right now those ten seconds do not give them a clear answer."</p>
+<!-- ============================== IDEA 2 — PRESS ============================== -->
+<section class="v2-idea" id="idea-2">
+  <div class="v2-idea-visual viz-press">
+    <div class="viz-press-content">
+      <div class="viz-magazines">
+        <div class="viz-magazine">
+          <div class="viz-magazine-title">FT How To Spend It</div>
+          <div class="viz-magazine-tag">Weekend</div>
+        </div>
+        <div class="viz-magazine">
+          <div class="viz-magazine-title">Condé Nast Traveller</div>
+          <div class="viz-magazine-tag">Monthly</div>
+        </div>
+        <div class="viz-magazine">
+          <div class="viz-magazine-title">El País Semanal</div>
+          <div class="viz-magazine-tag">Weekend</div>
+        </div>
       </div>
+      <div class="viz-press-stat">0</div>
+      <div class="viz-press-stat-label">Mainstream placements in 5 years</div>
+    </div>
+  </div>
+  <div class="v2-idea-text">
+    <div class="v2-idea-eyebrow">Idea two · Press</div>
+    <h2 class="v2-idea-title">Editorial PR, anchored to the B Corp moment.</h2>
+    <p class="v2-idea-body">
+      Five years of operation. Zero mainstream press. <strong>The story — a founder with 25 years in boutique hotels building a platform where 86% of every booking stays locally, now B Corp certified — is a feature article waiting to happen</strong>. One well-placed piece reaches the Explorer directly, gives advisors something to cite, <em>and feeds AI discovery tools simultaneously</em>.
+    </p>
+    <div class="v2-for-lars">
+      <div class="v2-for-lars-label">For Lars</div>
+      <p class="v2-for-lars-quote">"B Corp certification is the best press trigger you will ever have. Most companies put the badge in the footer. You should treat it as a brand launch."</p>
     </div>
   </div>
 </section>
 
-<!-- ============================== IDEA 4 ============================== -->
-<section class="idea" id="idea-4">
-  <span class="idea-number-bg">iv.</span>
-  <div class="container">
-    <div class="idea-content">
-      <div class="idea-label">Idea four · Product</div>
-      <h2 class="idea-title">Productised Named Experiences.</h2>
-      <p class="idea-body">
-        Instead of 99 map pins requiring self-assembly, create <strong>6 to 8 named, bookable journeys with a feeling at their centre</strong>. "Slow Slovenia." "The Rewilding Week." "Hosts Who Heal." Each bundles Stay, Taste, Discover, and Local Expert into one emotionally resonant package. Named experiences are <em>easy for advisors to recommend</em>, easy for press to write about, and easy for Lars to pitch at ITB.
-      </p>
-      <div class="for-lars">
-        <div class="for-lars-label">For Lars</div>
-        <p class="for-lars-quote">"Black Tomato's 'Get Lost' generated press for a decade from one creative decision. You have the inventory to do the same."</p>
-      </div>
+<!-- ============================== IDEA 3 — MANIFESTO ============================== -->
+<section class="v2-idea" id="idea-3">
+  <div class="v2-idea-visual viz-manifesto">
+    <div class="viz-manifesto-content">
+      <div class="viz-clock">10s</div>
+      <div class="viz-clock-unit">to decide if this is their platform</div>
+      <div class="viz-manifesto-line"></div>
+      <div class="viz-manifesto-tag">Right now, those ten seconds<br>do not give them a clear answer.</div>
+    </div>
+  </div>
+  <div class="v2-idea-text">
+    <div class="v2-idea-eyebrow">Idea three · Positioning</div>
+    <h2 class="v2-idea-title">The Anti-OTA Manifesto.</h2>
+    <p class="v2-idea-body">
+      The website currently speaks to two audiences at once — the values-aligned HNW Explorer and a mainstream traveller being educated about sustainability — and <strong>lands clearly with neither</strong>. A short, declarative manifesto tells the visitor in <em>ten seconds</em> what Singular Places is, who it is for, and what it stands against. It is what Lars communicates naturally in conversation but the homepage does not yet say.
+    </p>
+    <div class="v2-for-lars">
+      <div class="v2-for-lars-label">For Lars</div>
+      <p class="v2-for-lars-quote">"Your website confused our team on first visit — and we had already spoken to you. Your Explorer has ten seconds to decide if this is their platform."</p>
     </div>
   </div>
 </section>
 
-<!-- ============================== IDEA 5 ============================== -->
-<section class="idea" id="idea-5">
-  <span class="idea-number-bg">v.</span>
-  <div class="container">
-    <div class="idea-content">
-      <div class="idea-label">Idea five · Sales force</div>
-      <h2 class="idea-title">Visible and Incentivised Travel Experts.</h2>
-      <p class="idea-body">
-        Two moves that only work together. First, <strong>make Travel Experts visible</strong> — named profiles, photographs, the properties they personally curate. Second, <strong>give them a financial reason to bring their own clients</strong>: a commission share on bookings they originate. Right now they contribute knowledge but have no incentive to actively sell. With commission share, <em>ten country experts with their own HNW networks become Singular Places' lowest-cost sales team</em>.
-      </p>
-      <div class="for-lars">
-        <div class="for-lars-label">For Lars</div>
-        <p class="for-lars-quote">"Every successful luxury house leads with its people. Your Travel Experts exist but are invisible. Making them visible costs almost nothing. Giving them a commission share turns them into your sales force."</p>
+<!-- ============================== IDEA 4 — NAMED EXPERIENCES ============================== -->
+<section class="v2-idea" id="idea-4">
+  <div class="v2-idea-visual viz-experiences">
+    <div class="viz-experiences-content">
+      <div class="viz-exp-grid">
+        <div class="viz-exp-card">
+          <div class="viz-exp-card-num">01</div>
+          <div class="viz-exp-card-title">Slow Slovenia</div>
+          <div class="viz-exp-card-tag">7 nights · Alps + Brda</div>
+        </div>
+        <div class="viz-exp-card">
+          <div class="viz-exp-card-num">02</div>
+          <div class="viz-exp-card-title">The Rewilding Week</div>
+          <div class="viz-exp-card-tag">7 nights · Andalucía</div>
+        </div>
+        <div class="viz-exp-card">
+          <div class="viz-exp-card-num">03</div>
+          <div class="viz-exp-card-title">Hosts Who Heal</div>
+          <div class="viz-exp-card-tag">5 nights · Wellness</div>
+        </div>
+        <div class="viz-exp-card">
+          <div class="viz-exp-card-num">04</div>
+          <div class="viz-exp-card-title">The Cluster Crawl</div>
+          <div class="viz-exp-card-tag">10 nights · Multi-region</div>
+        </div>
+        <div class="viz-exp-card">
+          <div class="viz-exp-card-num">05</div>
+          <div class="viz-exp-card-title">Slow Spain</div>
+          <div class="viz-exp-card-tag">7 nights · Galicia + Asturias</div>
+        </div>
+        <div class="viz-exp-card">
+          <div class="viz-exp-card-num">06</div>
+          <div class="viz-exp-card-title">Vineyard Routes</div>
+          <div class="viz-exp-card-tag">5 nights · Brda + Goriška</div>
+        </div>
       </div>
+    </div>
+  </div>
+  <div class="v2-idea-text">
+    <div class="v2-idea-eyebrow">Idea four · Product</div>
+    <h2 class="v2-idea-title">Productised Named Experiences.</h2>
+    <p class="v2-idea-body">
+      Instead of 99 map pins requiring self-assembly, create <strong>6 to 8 named, bookable journeys with a feeling at their centre</strong>. Each bundles Stay, Taste, Discover, and Local Expert into one emotionally resonant package. Named experiences are <em>easy for advisors to recommend</em>, easy for press to write about, and easy for Lars to pitch at ITB.
+    </p>
+    <div class="v2-for-lars">
+      <div class="v2-for-lars-label">For Lars</div>
+      <p class="v2-for-lars-quote">"Black Tomato's 'Get Lost' generated press for a decade from one creative decision. You have the inventory to do the same."</p>
     </div>
   </div>
 </section>
 
-<!-- ============================== IDEA 6 ============================== -->
-<section class="idea" id="idea-6">
-  <span class="idea-number-bg">vi.</span>
-  <div class="container">
-    <div class="idea-content">
-      <div class="idea-label">Idea six · Experience</div>
-      <h2 class="idea-title">FAM Trips, sequenced after network membership.</h2>
-      <p class="idea-body">
-        The product is felt, not explained — the website proved that to your own team. <strong>A familiarisation trip puts 6 to 10 Serandipians advisors inside one Cluster</strong>. The Host absorbs the stay, the experience partners absorb the activities, Singular Places contributes coordination. In return, <em>six advisors who have lived the product carry it into their HNW client books for years</em>. Highest ROI channel available, near-zero cash cost.
-      </p>
-      <div class="for-lars">
-        <div class="for-lars-label">For Lars</div>
-        <p class="for-lars-quote">"You said the product is hard to explain. The solution is not better copy — it is putting the right people inside a Cluster and letting the place do the talking."</p>
+<!-- ============================== IDEA 5 — TRAVEL EXPERTS ============================== -->
+<section class="v2-idea" id="idea-5">
+  <div class="v2-idea-visual viz-experts">
+    <div class="viz-experts-content">
+      <div class="viz-experts-grid">
+        <div class="viz-expert">T</div>
+        <div class="viz-expert">M</div>
+        <div class="viz-expert">P</div>
+        <div class="viz-expert">A</div>
+        <div class="viz-expert">L</div>
+        <div class="viz-expert">C</div>
+        <div class="viz-expert">S</div>
+        <div class="viz-expert">N</div>
+        <div class="viz-expert">R</div>
+        <div class="viz-expert">G</div>
       </div>
+      <div class="viz-experts-stat">10</div>
+      <div class="viz-experts-stat-label">Country experts · One distributed sales team</div>
+    </div>
+  </div>
+  <div class="v2-idea-text">
+    <div class="v2-idea-eyebrow">Idea five · Sales force</div>
+    <h2 class="v2-idea-title">Visible &amp; Incentivised Travel Experts.</h2>
+    <p class="v2-idea-body">
+      Two moves that only work together. First, <strong>make Travel Experts visible</strong> — named profiles, photographs, the properties they personally curate. Second, <strong>give them a financial reason to sell</strong>: a commission share on bookings they originate. Right now they contribute knowledge but have no incentive to bring their own clients. <em>Ten country experts with HNW networks become Singular Places' lowest-cost sales team</em>.
+    </p>
+    <div class="v2-for-lars">
+      <div class="v2-for-lars-label">For Lars</div>
+      <p class="v2-for-lars-quote">"Every successful luxury house leads with its people. Your Travel Experts exist but are invisible. Giving them a commission share turns them into your sales force."</p>
     </div>
   </div>
 </section>
 
-<!-- ============================== IDEA 7 ============================== -->
-<section class="idea" id="idea-7">
-  <span class="idea-number-bg">vii.</span>
-  <div class="container">
-    <div class="idea-content">
-      <div class="idea-label">Idea seven · Voice</div>
-      <h2 class="idea-title">The Anti-Bucket-List Campaign.</h2>
-      <p class="idea-body">
-        Virtuoso's own 2026 data shows <strong>avoiding overtourism is the top priority for wealthy travellers</strong>. Singular Places' entire inventory is places those travellers have not heard of. That is not a weakness — it is <em>the positioning</em>. "We do not do the bucket list. We do the places the bucket list forgot." Homepage statement, press angle, newsletter series, social voice. Cost: almost nothing.
-      </p>
-      <div class="for-lars">
-        <div class="for-lars-label">For Lars</div>
-        <p class="for-lars-quote">"Your Explorer does not want to go where everyone else goes. Your inventory is built for exactly that. Say it directly."</p>
-      </div>
+<!-- ============================== IDEA 6 — FAM TRIPS ============================== -->
+<section class="v2-idea" id="idea-6">
+  <div class="v2-idea-visual viz-fam">
+    <div class="viz-fam-content">
+      <div class="viz-fam-stat">6</div>
+      <div class="viz-fam-line"></div>
+      <div class="viz-fam-caption">advisors inside one Cluster.<br>Years of bookings follow.</div>
+    </div>
+    <div class="viz-fam-credit">Photo · David Dvořáček</div>
+  </div>
+  <div class="v2-idea-text">
+    <div class="v2-idea-eyebrow">Idea six · Experience</div>
+    <h2 class="v2-idea-title">FAM Trips, after network membership.</h2>
+    <p class="v2-idea-body">
+      The product is felt, not explained. <strong>A familiarisation trip puts 6 to 10 Serandipians advisors inside one Cluster</strong>. The Host absorbs the stay, the experience partners absorb the activities, Singular Places contributes coordination. In return, <em>six advisors who have lived the product carry it into their HNW client books for years</em>. Highest ROI channel available, near-zero cash cost.
+    </p>
+    <div class="v2-for-lars">
+      <div class="v2-for-lars-label">For Lars</div>
+      <p class="v2-for-lars-quote">"You said the product is hard to explain. The solution is not better copy — it is putting the right people inside a Cluster and letting the place do the talking."</p>
     </div>
   </div>
 </section>
 
-<!-- ============================== IDEA 8 ============================== -->
-<section class="idea" id="idea-8">
-  <span class="idea-number-bg">viii.</span>
-  <div class="container">
-    <div class="idea-content">
-      <div class="idea-label">Idea eight · Geography</div>
-      <h2 class="idea-title">Spain as the Flagship Market.</h2>
-      <p class="idea-body">
-        Singular Places is present in 28 countries but <strong>dominant in none</strong>. Spain has the largest supply concentration, a government explicitly pivoting to quality-over-quantity tourism, gastronomic tourism up 28%, and <em>Lars physically based in Madrid</em>. Go deepest here first — the strongest cluster network, the first named experiences, the first FAM trips, the first press story — prove the model completely, then template it globally.
-      </p>
-      <div class="for-lars">
-        <div class="for-lars-label">For Lars</div>
-        <p class="for-lars-quote">"What if instead of a thin global platform, you became the definitive regenerative travel platform for Spain first — and used that as the proof of concept for everywhere else?"</p>
+<!-- ============================== IDEA 7 — ANTI-BUCKET-LIST ============================== -->
+<section class="v2-idea" id="idea-7">
+  <div class="v2-idea-visual viz-bucket">
+    <div class="viz-bucket-content">
+      <div class="viz-bucket-strike">
+        Eiffel Tower<br>
+        Santorini<br>
+        Bali
       </div>
+      <div class="viz-bucket-vs">we do</div>
+      <div class="viz-bucket-yes">
+        Brda. Bohinj.<br>
+        Asturias. Mawlynnong.
+      </div>
+    </div>
+  </div>
+  <div class="v2-idea-text">
+    <div class="v2-idea-eyebrow">Idea seven · Voice</div>
+    <h2 class="v2-idea-title">The Anti-Bucket-List Campaign.</h2>
+    <p class="v2-idea-body">
+      Virtuoso's own 2026 data shows <strong>avoiding overtourism is the top priority for wealthy travellers</strong>. Singular Places' entire inventory is places those travellers have not heard of. That is not a weakness — it is <em>the positioning</em>. "We do not do the bucket list. We do the places the bucket list forgot." Homepage statement, press angle, newsletter series, social voice. Cost: almost nothing.
+    </p>
+    <div class="v2-for-lars">
+      <div class="v2-for-lars-label">For Lars</div>
+      <p class="v2-for-lars-quote">"Your Explorer does not want to go where everyone else goes. Your inventory is built for exactly that. Say it directly."</p>
     </div>
   </div>
 </section>
 
-<!-- ============================== SEQUENCE ============================== -->
-<section class="sequence-section">
+<!-- ============================== IDEA 8 — SPAIN FLAGSHIP ============================== -->
+<section class="v2-idea" id="idea-8">
+  <div class="v2-idea-visual viz-spain">
+    <div class="viz-spain-content">
+      <div class="viz-spain-flag">España</div>
+      <div class="viz-spain-clusters">
+        <span class="viz-spain-cluster">Andalucía</span>
+        <span class="viz-spain-cluster">Galicia</span>
+        <span class="viz-spain-cluster">Asturias</span>
+        <span class="viz-spain-cluster">Rioja</span>
+        <span class="viz-spain-cluster">País Vasco</span>
+        <span class="viz-spain-cluster">Mallorca</span>
+      </div>
+      <div class="viz-spain-stats">
+        <div class="viz-spain-stat">
+          <div class="viz-spain-stat-num">+28%</div>
+          <div class="viz-spain-stat-label">Gastronomic tourism</div>
+        </div>
+        <div class="viz-spain-stat">
+          <div class="viz-spain-stat-num">+32%</div>
+          <div class="viz-spain-stat-label">Cultural tourism</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="v2-idea-text">
+    <div class="v2-idea-eyebrow">Idea eight · Geography</div>
+    <h2 class="v2-idea-title">Spain as the Flagship Market.</h2>
+    <p class="v2-idea-body">
+      Singular Places is present in 28 countries but <strong>dominant in none</strong>. Spain has the largest supply concentration, a government explicitly pivoting to quality-over-quantity tourism, gastronomic tourism up 28%, and <em>Lars physically based in Madrid</em>. Go deepest here first — the strongest cluster network, the first named experiences, the first FAM trips, the first press story — prove the model completely, then template it globally.
+    </p>
+    <div class="v2-for-lars">
+      <div class="v2-for-lars-label">For Lars</div>
+      <p class="v2-for-lars-quote">"What if instead of a thin global platform, you became the definitive regenerative travel platform for Spain first — and used that as the proof of concept for everywhere else?"</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== WAVES TIMELINE ============================== -->
+<section class="v2-waves">
   <div class="container">
     <div class="section-eyebrow">12-month sequence</div>
     <h2>Three waves. <em>One coherent build.</em></h2>
-    <p style="font-size: 1.15rem; color: var(--ink-soft); max-width: 720px; line-height: 1.6; margin-top: var(--space-3);">
-      The order matters. Each wave unlocks the next. The eight ideas are not parallel — they are sequential, designed to compound.
-    </p>
 
-    <div class="waves">
+    <div class="timeline">
+      <div class="timeline-grid">
 
-      <div class="wave">
-        <div class="wave-label">Wave one · Months 0–3</div>
-        <h3>Define and declare.</h3>
-        <ul class="wave-list">
-          <li><strong>Anti-OTA Manifesto.</strong> Rewrite the homepage. Ten seconds of clarity.</li>
-          <li><strong>Anti-Bucket-List voice.</strong> The narrative across every channel.</li>
-          <li><strong>Spain flagship decision.</strong> Allocate disproportionate effort here.</li>
-        </ul>
+        <div class="tl-wave">
+          <div class="tl-wave-dot">I</div>
+          <div class="tl-wave-period">Months 0–3</div>
+          <div class="tl-wave-title">Define &amp; declare.</div>
+          <ul class="tl-ideas">
+            <li data-num="iii">Anti-OTA Manifesto · ten seconds of clarity</li>
+            <li data-num="vii">Anti-Bucket-List voice · the narrative across every channel</li>
+            <li data-num="viii">Spain flagship decision · disproportionate effort</li>
+          </ul>
+        </div>
+
+        <div class="tl-wave">
+          <div class="tl-wave-dot">II</div>
+          <div class="tl-wave-period">Months 3–6</div>
+          <div class="tl-wave-title">Build the distribution.</div>
+          <ul class="tl-ideas">
+            <li data-num="iv">6 Named Experiences · bookable, brandable</li>
+            <li data-num="v">Travel Experts · visible, commission share live</li>
+            <li data-num="i">Serandipians application · submitted by month 6</li>
+          </ul>
+        </div>
+
+        <div class="tl-wave">
+          <div class="tl-wave-dot">III</div>
+          <div class="tl-wave-period">Months 6–12</div>
+          <div class="tl-wave-title">Amplify &amp; prove.</div>
+          <ul class="tl-ideas">
+            <li data-num="vi">FAM Trips · 6 advisors inside Slovenia Cluster</li>
+            <li data-num="ii">Editorial PR · coordinated with B Corp launch</li>
+          </ul>
+        </div>
+
       </div>
-
-      <div class="wave" data-start="3">
-        <div class="wave-label">Wave two · Months 3–6</div>
-        <h3>Build the distribution.</h3>
-        <ul class="wave-list">
-          <li><strong>Productised Named Experiences.</strong> Six bookable journeys.</li>
-          <li><strong>Visible &amp; incentivised Travel Experts.</strong> Profiles up. Commission share live.</li>
-          <li><strong>Serandipians application.</strong> Submitted by month 6.</li>
-        </ul>
-      </div>
-
-      <div class="wave" data-start="6">
-        <div class="wave-label">Wave three · Months 6–12</div>
-        <h3>Amplify and prove.</h3>
-        <ul class="wave-list">
-          <li><strong>FAM Trips.</strong> Six advisors inside the Slovenia Cluster.</li>
-          <li><strong>Editorial PR · B Corp launch.</strong> Press coordinated to certification moment.</li>
-        </ul>
-      </div>
-
     </div>
   </div>
 </section>
 
 <!-- ============================== CTA ============================== -->
-<section class="pitch-cta">
+<section class="v2-cta">
   <div class="container">
+    <div class="v2-cta-big-zero">€0</div>
+    <div class="v2-cta-big-label">Required investment</div>
     <h2>None of these <em>cost money you don't have</em>.</h2>
-    <p style="color: rgba(247,242,229,0.85); font-size: 1.15rem; line-height: 1.6; max-width: 720px; margin: var(--space-3) auto 0;">
-      All eight ideas activate assets Singular Places already owns: the founder's voice, the Cluster model, the Hosts, the Travel Experts, the 86% commitment, and B Corp certification in progress. The work is coordination, not investment.
+    <p>
+      All eight ideas activate assets Singular Places already owns: the founder's voice, the Cluster model, the Hosts, the Travel Experts, the 86% commitment, and B Corp certification in progress.
+      <br><br>
+      <strong style="color: var(--amber-light);">The work is coordination, not investment.</strong>
     </p>
-    <p class="pitch-cta-quote">
-      "Lars — give us the next conversation to walk through wave one. We start with what costs nothing and unlocks everything."
+    <p style="font-family: var(--font-display); font-style: italic; font-size: 1.5rem; color: var(--amber-light); margin-top: var(--space-4); font-variation-settings: 'opsz' 96, 'SOFT' 100;">
+      "Lars — give us the next conversation to walk through wave one."
     </p>
   </div>
 </section>
 
-<!-- ============================== AUTHORS ============================== -->
-<div class="pitch-authors">
+<!-- AUTHORS -->
+<div class="v2-authors">
   <div class="container">
     <p>
       Prepared by <strong>Team Singular Places</strong> · IE Business School · MBA Impact Project<br>
