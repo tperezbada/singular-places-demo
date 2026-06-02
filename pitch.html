@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Eight Ideas · A Pitch for Lars · Singular Places</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400..700,0..100,0..1;1,9..144,400..700,0..100,0..1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+/* ============================================================
+   PITCH PAGE — Eight ideas for Lars
+   ============================================================ */
+
+.pitch-page { background: var(--paper); }
+
+/* ===== HERO ===== */
+.pitch-hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #0F1410 0%, #1A2418 30%, #2A3727 70%, #4A5D3A 100%);
+  position: relative;
+  overflow: hidden;
+  color: var(--paper-light);
+}
+.pitch-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.16;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.5' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.pitch-hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  padding: var(--space-12) var(--space-3);
+}
+.pitch-hero-eyebrow {
+  font-size: 0.78rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--amber-light);
+  margin-bottom: var(--space-4);
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+.pitch-hero-eyebrow::before {
+  content: "";
+  width: 40px;
+  height: 1px;
+  background: var(--amber-light);
+}
+.pitch-hero h1 {
+  color: var(--paper-light);
+  font-size: clamp(3rem, 8vw, 7rem);
+  letter-spacing: -0.045em;
+  line-height: 0.94;
+  margin-bottom: var(--space-4);
+  font-weight: 400;
+}
+.pitch-hero h1 em {
+  font-style: italic;
+  color: var(--amber-light);
+  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+}
+.pitch-hero-sub {
+  font-size: 1.35rem;
+  line-height: 1.55;
+  max-width: 760px;
+  color: rgba(247, 242, 229, 0.92);
+  margin-bottom: var(--space-6);
+  font-weight: 300;
+}
+.pitch-hero-byline {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--amber-light);
+  font-variation-settings: "opsz" 36, "SOFT" 80;
+}
+.pitch-scroll-hint {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(247,242,229,0.5);
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  animation: bounce 2.5s ease-in-out infinite;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.5; }
+  50% { transform: translateX(-50%) translateY(8px); opacity: 1; }
+}
+
+/* ===== THE THREAD SECTION ===== */
+.thread-section {
+  padding: var(--space-12) 0;
+  background: var(--paper-alt);
+  text-align: center;
+}
+.thread-eyebrow {
+  font-size: 0.78rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: var(--space-3);
+  font-weight: 600;
+}
+.thread-quote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+  color: var(--ink);
+  line-height: 1.25;
+  letter-spacing: -0.025em;
+  max-width: 1000px;
+  margin: 0 auto var(--space-4);
+}
+.thread-quote em {
+  color: var(--terracotta);
+  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+}
+.thread-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+  max-width: 900px;
+  margin: var(--space-6) auto 0;
+}
+@media (max-width: 800px) { .thread-pillars { grid-template-columns: 1fr; } }
+.thread-pillar {
+  background: var(--paper-light);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius);
+  border-top: 2px solid var(--moss);
+}
+.thread-pillar-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--moss);
+  margin-bottom: 6px;
+}
+.thread-pillar-text {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.15rem;
+  font-variation-settings: "opsz" 48, "SOFT" 80;
+  color: var(--ink);
+  line-height: 1.3;
+}
+
+/* ===== IDEA SECTION ===== */
+.idea {
+  padding: var(--space-12) 0;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+}
+.idea:nth-of-type(odd) { background: var(--paper); }
+.idea:nth-of-type(even) { background: var(--paper-alt); }
+
+.idea-number-bg {
+  position: absolute;
+  top: 50%;
+  right: -2vw;
+  transform: translateY(-50%);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(14rem, 28vw, 28rem);
+  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+  color: rgba(184, 98, 62, 0.06);
+  line-height: 0.85;
+  pointer-events: none;
+  letter-spacing: -0.05em;
+  z-index: 0;
+}
+
+.idea-content {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+}
+
+.idea-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: var(--space-3);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.idea-label::before {
+  content: "";
+  width: 32px;
+  height: 1px;
+  background: var(--terracotta);
+}
+
+.idea-title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(2.5rem, 5.5vw, 4.2rem);
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-bottom: var(--space-4);
+}
+
+.idea-body {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  margin-bottom: var(--space-6);
+  max-width: 760px;
+}
+
+.idea-body strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.idea-body em {
+  font-style: italic;
+  color: var(--moss-dark);
+}
+
+/* "For Lars" quote box */
+.for-lars {
+  background: var(--ink);
+  color: var(--paper-light);
+  padding: var(--space-5) var(--space-6);
+  border-radius: var(--radius-lg);
+  position: relative;
+  max-width: 820px;
+  margin-top: var(--space-4);
+  border-left: 3px solid var(--amber-light);
+}
+.for-lars-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--amber-light);
+  margin-bottom: var(--space-2);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.for-lars-label::before {
+  content: "";
+  width: 24px;
+  height: 1px;
+  background: var(--amber-light);
+}
+.for-lars-quote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.2rem, 2vw, 1.55rem);
+  font-variation-settings: "opsz" 96, "SOFT" 100;
+  color: var(--paper-light);
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+}
+
+/* ===== INDEX / TABLE OF CONTENTS ===== */
+.index-section {
+  padding: var(--space-8) 0;
+  background: var(--ink);
+  color: var(--paper-light);
+}
+.index-section h2 {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.6rem;
+  font-variation-settings: "opsz" 96, "SOFT" 80;
+  color: var(--amber-light);
+  margin-bottom: var(--space-4);
+}
+.index-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-2);
+}
+@media (max-width: 720px) { .index-grid { grid-template-columns: 1fr; } }
+.index-item {
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  gap: var(--space-2);
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+  font-size: 0.98rem;
+  color: rgba(247,242,229,0.85);
+  text-decoration: none;
+  transition: padding-left 0.2s ease;
+}
+.index-item:hover {
+  padding-left: var(--space-2);
+  color: var(--paper-light);
+}
+.index-item-num {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--amber-light);
+  font-variation-settings: "opsz" 48;
+}
+
+/* ===== SEQUENCE SECTION ===== */
+.sequence-section {
+  padding: var(--space-12) 0;
+  background: var(--paper-deep);
+}
+.sequence-section h2 {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(2.3rem, 5vw, 3.8rem);
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: var(--space-3);
+  max-width: 900px;
+}
+.sequence-section h2 em {
+  color: var(--terracotta);
+  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+}
+.sequence-section .section-eyebrow {
+  font-size: 0.78rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: var(--space-3);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.sequence-section .section-eyebrow::before {
+  content: "";
+  width: 32px;
+  height: 1px;
+  background: var(--terracotta);
+}
+
+.waves {
+  margin-top: var(--space-6);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+@media (max-width: 900px) { .waves { grid-template-columns: 1fr; } }
+.wave {
+  background: var(--paper-light);
+  padding: var(--space-5);
+  border-radius: var(--radius-lg);
+  border-top: 3px solid var(--moss);
+}
+.wave-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: var(--space-2);
+  font-weight: 500;
+}
+.wave h3 {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.6rem;
+  font-variation-settings: "opsz" 96, "SOFT" 80;
+  margin-bottom: var(--space-3);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+.wave-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.wave-list li {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 8px;
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--line-soft);
+  color: var(--ink-soft);
+  font-size: 0.98rem;
+  line-height: 1.5;
+}
+.wave-list li:last-child { border-bottom: none; }
+.wave-list li strong {
+  display: block;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.05rem;
+  font-variation-settings: "opsz" 36, "SOFT" 80;
+}
+.wave-list li::before {
+  content: counter(idea-counter, decimal-leading-zero);
+  counter-increment: idea-counter;
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--terracotta);
+  font-size: 0.95rem;
+}
+.wave-list { counter-reset: idea-counter; }
+.wave[data-start="3"] .wave-list { counter-reset: idea-counter 2; }
+.wave[data-start="6"] .wave-list { counter-reset: idea-counter 5; }
+
+/* ===== CTA ===== */
+.pitch-cta {
+  padding: var(--space-12) 0;
+  background: linear-gradient(135deg, var(--ink) 0%, #2A3727 100%);
+  color: var(--paper-light);
+  text-align: center;
+}
+.pitch-cta h2 {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+  color: var(--paper-light);
+  margin: 0 auto var(--space-4);
+  max-width: 900px;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+}
+.pitch-cta h2 em {
+  color: var(--amber-light);
+  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+}
+.pitch-cta-quote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.3rem, 2.2vw, 1.7rem);
+  font-variation-settings: "opsz" 96, "SOFT" 100;
+  color: var(--amber-light);
+  max-width: 800px;
+  margin: var(--space-6) auto 0;
+  line-height: 1.45;
+}
+
+/* ===== AUTHORS / FOOTER ===== */
+.pitch-authors {
+  padding: var(--space-6) 0;
+  background: var(--paper);
+  color: var(--ink-muted);
+  text-align: center;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+}
+.pitch-authors strong {
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-variation-settings: "opsz" 36, "SOFT" 80;
+  font-size: 1.05rem;
+}
+
+/* ===== SCROLL ANIMATIONS ===== */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .idea-content,
+    .thread-pillar,
+    .wave {
+      animation: rise-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 60%;
+    }
+    @keyframes rise-in {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  }
+}
+</style>
+</head>
+<body class="pitch-page">
+
+<div class="demo-banner">
+  <strong>MBA IMPACT PROJECT</strong> &nbsp;·&nbsp; Eight Ideas · A pitch for Lars · Team Singular Places · IE Business School
+</div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Singular<span>Places</span></a>
+    <ul class="nav-menu">
+      <li><a href="pitch.html">The Pitch</a></li>
+      <li><a href="ai-audit.html">AI Audit</a></li>
+      <li><a href="pitch-networks.html">Deep dive · Networks</a></li>
+      <li><a href="index.html">Proposal</a></li>
+    </ul>
+    <a href="https://wa.me/" class="nav-cta">Talk to a Singular Expert</a>
+  </div>
+</nav>
+
+<!-- ============================== HERO ============================== -->
+<section class="pitch-hero">
+  <div class="container">
+    <div class="pitch-hero-content">
+      <div class="pitch-hero-eyebrow">A pitch for Lars · 8 ideas · zero ad spend · one thesis</div>
+      <h1>How Singular Places reaches the wealthy <em>without buying their attention</em>.</h1>
+      <p class="pitch-hero-sub">
+        Eight ideas. None require advertising. None require algorithms. All compound over time. All reach the Meaningful Explorer through the channels they actually use — trusted advisors, authoritative editorial, and the direct experience of the product.
+      </p>
+      <p class="pitch-hero-byline">— Team Singular Places · IE Business School · MBA Impact Project · May 2026</p>
+    </div>
+  </div>
+  <div class="pitch-scroll-hint">scroll</div>
+</section>
+
+<!-- ============================== THE THREAD ============================== -->
+<section class="thread-section">
+  <div class="container">
+    <div class="thread-eyebrow">The connecting thread</div>
+    <p class="thread-quote">
+      All eight reach Lars's Explorer through channels they <em>actually use</em>.
+    </p>
+
+    <div class="thread-pillars">
+      <div class="thread-pillar">
+        <div class="thread-pillar-label">Pillar one</div>
+        <div class="thread-pillar-text">Trusted advisors</div>
+      </div>
+      <div class="thread-pillar">
+        <div class="thread-pillar-label">Pillar two</div>
+        <div class="thread-pillar-text">Authoritative editorial</div>
+      </div>
+      <div class="thread-pillar">
+        <div class="thread-pillar-label">Pillar three</div>
+        <div class="thread-pillar-text">Direct experience of the product</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== INDEX ============================== -->
+<section class="index-section">
+  <div class="container">
+    <h2>The eight ideas, in order.</h2>
+    <div class="index-grid">
+      <a class="index-item" href="#idea-1"><span class="index-item-num">i.</span><span>Serandipians Network Membership</span></a>
+      <a class="index-item" href="#idea-2"><span class="index-item-num">ii.</span><span>Editorial PR anchored to the B Corp moment</span></a>
+      <a class="index-item" href="#idea-3"><span class="index-item-num">iii.</span><span>The Anti-OTA Manifesto</span></a>
+      <a class="index-item" href="#idea-4"><span class="index-item-num">iv.</span><span>Productised Named Experiences</span></a>
+      <a class="index-item" href="#idea-5"><span class="index-item-num">v.</span><span>Visible and Incentivised Travel Experts</span></a>
+      <a class="index-item" href="#idea-6"><span class="index-item-num">vi.</span><span>FAM Trips sequenced after Network Membership</span></a>
+      <a class="index-item" href="#idea-7"><span class="index-item-num">vii.</span><span>Anti-Bucket-List Campaign</span></a>
+      <a class="index-item" href="#idea-8"><span class="index-item-num">viii.</span><span>Spain as the Flagship Market</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== IDEA 1 ============================== -->
+<section class="idea" id="idea-1">
+  <span class="idea-number-bg">i.</span>
+  <div class="container">
+    <div class="idea-content">
+      <div class="idea-label">Idea one · Distribution</div>
+      <h2 class="idea-title">Serandipians Network Membership.</h2>
+      <p class="idea-body">
+        Lars's Explorer books through a travel advisor, not a website. <strong>Serandipians is a by-invitation European network of 790 luxury travel agencies representing €6 billion in annual sales</strong> — and their clients are exactly Lars's target. Joining as a supply partner puts Singular Places <em>inside the advisor relationship</em> without a single euro of ad spend.
+      </p>
+      <div class="for-lars">
+        <div class="for-lars-label">For Lars</div>
+        <p class="for-lars-quote">"Your Explorer listens to their travel designer. The 790 agencies inside Serandipians are those designers. Right now none of them have a structural reason to recommend you. This fixes that."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== IDEA 2 ============================== -->
+<section class="idea" id="idea-2">
+  <span class="idea-number-bg">ii.</span>
+  <div class="container">
+    <div class="idea-content">
+      <div class="idea-label">Idea two · Press</div>
+      <h2 class="idea-title">Editorial PR, anchored to the B Corp moment.</h2>
+      <p class="idea-body">
+        Five years of operation. Zero mainstream press. <strong>The story — a founder with 25 years in boutique hotels building a platform where 86% of every booking stays locally, now B Corp certified — is a feature article waiting to happen</strong> in FT How To Spend It, Condé Nast Traveller, and El País Semanal. One well-placed piece reaches the Explorer directly, gives advisors something to cite, <em>and feeds AI discovery tools simultaneously</em>.
+      </p>
+      <div class="for-lars">
+        <div class="for-lars-label">For Lars</div>
+        <p class="for-lars-quote">"B Corp certification is the best press trigger you will ever have. Most companies put the badge in the footer. You should treat it as a brand launch."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== IDEA 3 ============================== -->
+<section class="idea" id="idea-3">
+  <span class="idea-number-bg">iii.</span>
+  <div class="container">
+    <div class="idea-content">
+      <div class="idea-label">Idea three · Positioning</div>
+      <h2 class="idea-title">The Anti-OTA Manifesto.</h2>
+      <p class="idea-body">
+        The website currently speaks to two audiences at once — the values-aligned HNW Explorer and a mainstream traveller being educated about sustainability — and <strong>lands clearly with neither</strong>. A short, declarative manifesto tells the visitor in <em>ten seconds</em> what Singular Places is, who it is for, and what it stands against. It is what Lars communicates naturally in conversation but the homepage does not yet say.
+      </p>
+      <div class="for-lars">
+        <div class="for-lars-label">For Lars</div>
+        <p class="for-lars-quote">"Your website confused our team on first visit — and we had already spoken to you. Your Explorer has ten seconds to decide if this is their platform. Right now those ten seconds do not give them a clear answer."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== IDEA 4 ============================== -->
+<section class="idea" id="idea-4">
+  <span class="idea-number-bg">iv.</span>
+  <div class="container">
+    <div class="idea-content">
+      <div class="idea-label">Idea four · Product</div>
+      <h2 class="idea-title">Productised Named Experiences.</h2>
+      <p class="idea-body">
+        Instead of 99 map pins requiring self-assembly, create <strong>6 to 8 named, bookable journeys with a feeling at their centre</strong>. "Slow Slovenia." "The Rewilding Week." "Hosts Who Heal." Each bundles Stay, Taste, Discover, and Local Expert into one emotionally resonant package. Named experiences are <em>easy for advisors to recommend</em>, easy for press to write about, and easy for Lars to pitch at ITB.
+      </p>
+      <div class="for-lars">
+        <div class="for-lars-label">For Lars</div>
+        <p class="for-lars-quote">"Black Tomato's 'Get Lost' generated press for a decade from one creative decision. You have the inventory to do the same."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== IDEA 5 ============================== -->
+<section class="idea" id="idea-5">
+  <span class="idea-number-bg">v.</span>
+  <div class="container">
+    <div class="idea-content">
+      <div class="idea-label">Idea five · Sales force</div>
+      <h2 class="idea-title">Visible and Incentivised Travel Experts.</h2>
+      <p class="idea-body">
+        Two moves that only work together. First, <strong>make Travel Experts visible</strong> — named profiles, photographs, the properties they personally curate. Second, <strong>give them a financial reason to bring their own clients</strong>: a commission share on bookings they originate. Right now they contribute knowledge but have no incentive to actively sell. With commission share, <em>ten country experts with their own HNW networks become Singular Places' lowest-cost sales team</em>.
+      </p>
+      <div class="for-lars">
+        <div class="for-lars-label">For Lars</div>
+        <p class="for-lars-quote">"Every successful luxury house leads with its people. Your Travel Experts exist but are invisible. Making them visible costs almost nothing. Giving them a commission share turns them into your sales force."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== IDEA 6 ============================== -->
+<section class="idea" id="idea-6">
+  <span class="idea-number-bg">vi.</span>
+  <div class="container">
+    <div class="idea-content">
+      <div class="idea-label">Idea six · Experience</div>
+      <h2 class="idea-title">FAM Trips, sequenced after network membership.</h2>
+      <p class="idea-body">
+        The product is felt, not explained — the website proved that to your own team. <strong>A familiarisation trip puts 6 to 10 Serandipians advisors inside one Cluster</strong>. The Host absorbs the stay, the experience partners absorb the activities, Singular Places contributes coordination. In return, <em>six advisors who have lived the product carry it into their HNW client books for years</em>. Highest ROI channel available, near-zero cash cost.
+      </p>
+      <div class="for-lars">
+        <div class="for-lars-label">For Lars</div>
+        <p class="for-lars-quote">"You said the product is hard to explain. The solution is not better copy — it is putting the right people inside a Cluster and letting the place do the talking."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== IDEA 7 ============================== -->
+<section class="idea" id="idea-7">
+  <span class="idea-number-bg">vii.</span>
+  <div class="container">
+    <div class="idea-content">
+      <div class="idea-label">Idea seven · Voice</div>
+      <h2 class="idea-title">The Anti-Bucket-List Campaign.</h2>
+      <p class="idea-body">
+        Virtuoso's own 2026 data shows <strong>avoiding overtourism is the top priority for wealthy travellers</strong>. Singular Places' entire inventory is places those travellers have not heard of. That is not a weakness — it is <em>the positioning</em>. "We do not do the bucket list. We do the places the bucket list forgot." Homepage statement, press angle, newsletter series, social voice. Cost: almost nothing.
+      </p>
+      <div class="for-lars">
+        <div class="for-lars-label">For Lars</div>
+        <p class="for-lars-quote">"Your Explorer does not want to go where everyone else goes. Your inventory is built for exactly that. Say it directly."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== IDEA 8 ============================== -->
+<section class="idea" id="idea-8">
+  <span class="idea-number-bg">viii.</span>
+  <div class="container">
+    <div class="idea-content">
+      <div class="idea-label">Idea eight · Geography</div>
+      <h2 class="idea-title">Spain as the Flagship Market.</h2>
+      <p class="idea-body">
+        Singular Places is present in 28 countries but <strong>dominant in none</strong>. Spain has the largest supply concentration, a government explicitly pivoting to quality-over-quantity tourism, gastronomic tourism up 28%, and <em>Lars physically based in Madrid</em>. Go deepest here first — the strongest cluster network, the first named experiences, the first FAM trips, the first press story — prove the model completely, then template it globally.
+      </p>
+      <div class="for-lars">
+        <div class="for-lars-label">For Lars</div>
+        <p class="for-lars-quote">"What if instead of a thin global platform, you became the definitive regenerative travel platform for Spain first — and used that as the proof of concept for everywhere else?"</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== SEQUENCE ============================== -->
+<section class="sequence-section">
+  <div class="container">
+    <div class="section-eyebrow">12-month sequence</div>
+    <h2>Three waves. <em>One coherent build.</em></h2>
+    <p style="font-size: 1.15rem; color: var(--ink-soft); max-width: 720px; line-height: 1.6; margin-top: var(--space-3);">
+      The order matters. Each wave unlocks the next. The eight ideas are not parallel — they are sequential, designed to compound.
+    </p>
+
+    <div class="waves">
+
+      <div class="wave">
+        <div class="wave-label">Wave one · Months 0–3</div>
+        <h3>Define and declare.</h3>
+        <ul class="wave-list">
+          <li><strong>Anti-OTA Manifesto.</strong> Rewrite the homepage. Ten seconds of clarity.</li>
+          <li><strong>Anti-Bucket-List voice.</strong> The narrative across every channel.</li>
+          <li><strong>Spain flagship decision.</strong> Allocate disproportionate effort here.</li>
+        </ul>
+      </div>
+
+      <div class="wave" data-start="3">
+        <div class="wave-label">Wave two · Months 3–6</div>
+        <h3>Build the distribution.</h3>
+        <ul class="wave-list">
+          <li><strong>Productised Named Experiences.</strong> Six bookable journeys.</li>
+          <li><strong>Visible &amp; incentivised Travel Experts.</strong> Profiles up. Commission share live.</li>
+          <li><strong>Serandipians application.</strong> Submitted by month 6.</li>
+        </ul>
+      </div>
+
+      <div class="wave" data-start="6">
+        <div class="wave-label">Wave three · Months 6–12</div>
+        <h3>Amplify and prove.</h3>
+        <ul class="wave-list">
+          <li><strong>FAM Trips.</strong> Six advisors inside the Slovenia Cluster.</li>
+          <li><strong>Editorial PR · B Corp launch.</strong> Press coordinated to certification moment.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================== CTA ============================== -->
+<section class="pitch-cta">
+  <div class="container">
+    <h2>None of these <em>cost money you don't have</em>.</h2>
+    <p style="color: rgba(247,242,229,0.85); font-size: 1.15rem; line-height: 1.6; max-width: 720px; margin: var(--space-3) auto 0;">
+      All eight ideas activate assets Singular Places already owns: the founder's voice, the Cluster model, the Hosts, the Travel Experts, the 86% commitment, and B Corp certification in progress. The work is coordination, not investment.
+    </p>
+    <p class="pitch-cta-quote">
+      "Lars — give us the next conversation to walk through wave one. We start with what costs nothing and unlocks everything."
+    </p>
+  </div>
+</section>
+
+<!-- ============================== AUTHORS ============================== -->
+<div class="pitch-authors">
+  <div class="container">
+    <p>
+      Prepared by <strong>Team Singular Places</strong> · IE Business School · MBA Impact Project<br>
+      Bharath Taneja · Carlos Monroy · William Reid · Santiago Lince · Tomás Pérez · May 2026
+    </p>
+  </div>
+</div>
+
+</body>
+</html>
